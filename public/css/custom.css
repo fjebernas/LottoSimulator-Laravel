@@ -1,0 +1,31 @@
+
+h1 {
+    padding: 2rem 0;
+}
+
+fieldset {
+    height: fit-content;
+    column-gap: 20px;
+}
+
+.form-check-label {
+    font-size: 1.5rem;
+    color: brown;
+    padding-left: 5px;
+}
+
+.buttons {
+    padding-top: 2rem;
+    display: flex;
+    column-gap: 0.5rem;
+}
+
+.jumbotron {
+    text-align: center !important;
+    width: fit-content !important;
+    height: fit-content !important;
+    align-self: center !important;
+    justify-self: center !important;
+    padding: 1rem 5rem !important;
+    margin-bottom: 2rem;
+}
