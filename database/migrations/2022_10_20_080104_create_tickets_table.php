@@ -18,7 +18,7 @@ return new class extends Migration
             $table->timestamps();
             $table->json('digits');
             $table->boolean('is_valid')->default(true)->nullable();
-            $table->integer('matched-digits')->nullable();
+            $table->integer('matched_digits')->nullable();
             $table->integer('roll_event_id')->nullable();
         });
     }

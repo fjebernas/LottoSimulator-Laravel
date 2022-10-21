@@ -24,6 +24,7 @@
                 @for ($i = 1; $i <= $combination_count; $i++)
                     <th scope='col' class='col-md-1'>Digit #{{ $i }}</th>
                 @endfor
+                <th scope="col" class="col-md-1">Matched digits</th>
                 <th scope="col" class="col-md-1">Roll event ID</th>
             </tr>
         </thead>
@@ -36,6 +37,7 @@
                         @foreach ($ticket->digits as $digit)
                             <td>{{ $digit }}</td>
                         @endforeach
+                        <td>{{ $ticket->matched_digits }}</td>
                         <th scope='row'>{{ $ticket->roll_event_id }}</td>
                     </tr>
                 @endforeach

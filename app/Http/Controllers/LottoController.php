@@ -49,6 +49,7 @@ class LottoController extends Controller
     public function showResults() {
         $roll_event_id = request('roll_event_id');
 
+        $this->setTicketsMatchedDigits($roll_event_id);
         $this->invalidateTickets($roll_event_id);
         $this->closeRollEvent($roll_event_id);
 
@@ -106,5 +107,32 @@ class LottoController extends Controller
         DB::table('roll_events')
             ->where('id', $roll_event_id)
             ->update(['is_finished' => true]);
+    }
+
+    private function setTicketsMatchedDigits($roll_event_id) {
+        $tickets = Ticket::where('roll_event_id', $roll_event_id)->get();
+        foreach ($tickets as $ticket) {
+            $this->setMatchedDigits($roll_event_id, $ticket->id);
+        }
+    }
+
+    private function setMatchedDigits($roll_event_id, $ticket_id) {
+        DB::table('tickets')
+            ->where('id', $ticket_id)
+            ->update(['matched_digits' => $this->getMatchedDigits($roll_event_id, $ticket_id)]);
+    }
+
+    private function getMatchedDigits($roll_event_id, $ticket_id) {
+        $counter = 0;
+        $rolled_digits = Roll::where('roll_event_id', $roll_event_id)
+                            ->pluck('rolled_digit');
+        foreach ($rolled_digits as $rolled_digit) {
+            if (in_array($rolled_digit, Ticket::where('id', $ticket_id)
+                                            ->value('digits'))) {
+                $counter = $counter + 1;
+            }
+        }
+
+        return $counter;
     }
 }
