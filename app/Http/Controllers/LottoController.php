@@ -19,7 +19,7 @@ class LottoController extends Controller
         $this->registerValidTickets($roll_event->id);
 
         return view('lotto.roll')
-            ->with('tickets', Ticket::where('is_valid','=',true)->get())
+            ->with('tickets', Ticket::where('is_valid', true)->get())
             ->with('combination_count', Ticket::$combination_count)
             ->with('roll_event_id', $roll_event->id)
             ->with('rolled_digit', '')
@@ -43,20 +43,21 @@ class LottoController extends Controller
         $this->decrementRollsLeft($roll_event_id);
         
         return view('lotto.roll')
-            ->with('tickets', Ticket::where('roll_event_id', '=', $roll_event_id)->get())
+            ->with('tickets', Ticket::where('roll_event_id', $roll_event_id)->get())
             ->with('combination_count', Ticket::$combination_count)
             ->with('roll_event_id', $roll_event_id)
             ->with('rolled_digit', $unique_random_digit)
-            ->with('rolls_left', RollEvent::where('id', $roll_event_id)->value('rolls_left'))
+            ->with('rolls_left', RollEvent::where('id', $roll_event_id)
+                                        ->value('rolls_left'))
             ->with('msg', 'RNG success. Rolled digit: ' . $unique_random_digit);
     }
 
     public function getUniqueRandomDigit($roll_event_id) {
         $random_digit = null;
+
         do {
             $random_digit = rand(Ticket::$digits_range['min'], Ticket::$digits_range['max']);
-        } while (DB::table('rolls')
-                    ->where('roll_event_id', $roll_event_id)
+        } while (Roll::where('roll_event_id', $roll_event_id)
                     ->where('rolled_digit', $random_digit)
                     ->exists());
 
@@ -79,26 +80,25 @@ class LottoController extends Controller
     public function showResults() {
         $roll_event_id = request('roll_event_id');
 
-        $rolls = Roll::where('roll_event_id', $roll_event_id)->get();
-
         $this->invalidateTickets($roll_event_id);
         $this->closeRollEvent($roll_event_id);
 
         return view('lotto.results')
-            ->with('tickets', Ticket::where('roll_event_id', '=', $roll_event_id)->get())
-            ->with('combination_count', Ticket::$combination_count)
-            ->with('rolls', $rolls);
+            ->with('rolls', Roll::where('roll_event_id', $roll_event_id)
+                                ->pluck('rolled_digit'))
+            ->with('tickets', Ticket::where('roll_event_id', $roll_event_id)->get())
+            ->with('combination_count', Ticket::$combination_count);
     }
 
     public function invalidateTickets($roll_event_id) {
         DB::table('tickets')
-        ->where('roll_event_id', $roll_event_id)
-        ->update(['is_valid' => false]);
+            ->where('roll_event_id', $roll_event_id)
+            ->update(['is_valid' => false]);
     }
 
     public function closeRollEvent($roll_event_id) {
         DB::table('roll_events')
-        ->where('id', $roll_event_id)
-        ->update(['is_finished' => true]);
+            ->where('id', $roll_event_id)
+            ->update(['is_finished' => true]);
     }
 }

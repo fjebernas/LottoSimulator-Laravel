@@ -11,7 +11,7 @@ class TicketController extends Controller
     public function index() {
 
         return view('ticket.index')
-            ->with('tickets', Ticket::where('is_valid','=',true)->get())
+            ->with('tickets', Ticket::where('is_valid', true)->get())
             ->with('combination_count', Ticket::$combination_count);
     }
 
