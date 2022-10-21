@@ -27,12 +27,6 @@ class LottoController extends Controller
             ->with('msg', 'Roll event created with ID: ' . $roll_event->id . '. Valid tickets are registered.');
     }
 
-    public function registerValidTickets($roll_event_id) {
-        DB::table('tickets')
-            ->where('is_valid', true)
-            ->update(['roll_event_id' => $roll_event_id]);
-    }
-
     public function roll() {
         // get the current roll event id through POST
         $roll_event_id = request('roll_event_id');
@@ -52,31 +46,6 @@ class LottoController extends Controller
             ->with('msg', 'RNG success. Rolled digit: ' . $unique_random_digit);
     }
 
-    public function getUniqueRandomDigit($roll_event_id) {
-        $random_digit = null;
-
-        do {
-            $random_digit = rand(Ticket::$digits_range['min'], Ticket::$digits_range['max']);
-        } while (Roll::where('roll_event_id', $roll_event_id)
-                    ->where('rolled_digit', $random_digit)
-                    ->exists());
-
-        return $random_digit;
-    }
-
-    public function storeRoll($digit, $roll_event_id) {
-        $roll = new Roll();
-        $roll->rolled_digit = $digit;
-        $roll->roll_event_id = $roll_event_id;
-        $roll->save();
-    }
-
-    public function decrementRollsLeft($roll_event_id) {
-        DB::table('roll_events')
-            ->where('id', $roll_event_id)
-            ->decrement('rolls_left');
-    }
-
     public function showResults() {
         $roll_event_id = request('roll_event_id');
 
@@ -90,13 +59,50 @@ class LottoController extends Controller
             ->with('combination_count', Ticket::$combination_count);
     }
 
-    public function invalidateTickets($roll_event_id) {
+    /*
+    *
+    *
+    *
+    */
+
+    private function registerValidTickets($roll_event_id) {
+        DB::table('tickets')
+            ->where('is_valid', true)
+            ->update(['roll_event_id' => $roll_event_id]);
+    }
+
+    private function getUniqueRandomDigit($roll_event_id) {
+        $random_digit = null;
+
+        do {
+            $random_digit = rand(Ticket::$digits_range['min'], Ticket::$digits_range['max']);
+        } while (Roll::where('roll_event_id', $roll_event_id)
+                    ->where('rolled_digit', $random_digit)
+                    ->exists());
+
+        return $random_digit;
+    }
+
+    private function storeRoll($digit, $roll_event_id) {
+        $roll = new Roll();
+        $roll->rolled_digit = $digit;
+        $roll->roll_event_id = $roll_event_id;
+        $roll->save();
+    }
+
+    private function decrementRollsLeft($roll_event_id) {
+        DB::table('roll_events')
+            ->where('id', $roll_event_id)
+            ->decrement('rolls_left');
+    }
+
+    private function invalidateTickets($roll_event_id) {
         DB::table('tickets')
             ->where('roll_event_id', $roll_event_id)
             ->update(['is_valid' => false]);
     }
 
-    public function closeRollEvent($roll_event_id) {
+    private function closeRollEvent($roll_event_id) {
         DB::table('roll_events')
             ->where('id', $roll_event_id)
             ->update(['is_finished' => true]);

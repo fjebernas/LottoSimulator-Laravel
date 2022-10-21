@@ -40,7 +40,7 @@
 <div class="buttons">
     <a href='/tickets/create' class='btn btn-primary'>Add ticket</a>
     @if (count($tickets) > 0)
-    <a href="/lotto/start" class='btn btn-warning'>Proceed</a>
+    <a id="btn-proceed" class='btn btn-warning'>Proceed</a>
     @else
     <a href="#" class='btn btn-warning disabled'>Proceed</a>
     @endif

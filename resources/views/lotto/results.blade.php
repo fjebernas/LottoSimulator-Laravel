@@ -8,7 +8,7 @@
             <div class='text-center card text-white bg-info mb-3' style='max-width: 10rem; margin-right: 10px;'>
                 <div class='card-header'>Rolled digit</div>
                 <div class='card-body'>
-                    <h1 class='card-title'>{{ $roll }}</h1>
+                    <h1 class='card-title py-0'>{{ $roll }}</h1>
                 </div>
             </div>
         @endforeach

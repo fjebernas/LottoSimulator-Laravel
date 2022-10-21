@@ -9,14 +9,16 @@
     <div class='alert alert-success'>{{ $msg }}</div>
     @endif
 
-    <div class="jumbotron bg-secondary text-white rounded">
-        <h1 class="display-4">
+    <div class="jumbotron bg-info text-white rounded">
+        <h1 class="display-4 py-0 my-0">
+            <code class="text-white">
                 <!-- rolled digit shows here -->
                 @if ($rolled_digit !== '')
                     {{ $rolled_digit }}
                 @else
                     --
                 @endif
+            </code>
         </h1>
         <p class="lead">Rolled number</p>
         <p class="lead">
@@ -25,13 +27,13 @@
                     @csrf
                     {{-- for passing the roll event id --}}
                     <input type="hidden" name="roll_event_id" value="{{ $roll_event_id }}">
-                    <button class='btn btn-primary btn-lg' type='submit'>Roll!</button>
+                    <button class='btn btn-warning btn-lg' type='submit'>Roll!</button>
                 </form>
             @else
                 <form action="/lotto/results" method="post">
                     @csrf
                     <input type="hidden" name="roll_event_id" value="{{ $roll_event_id }}">
-                    <button class='btn btn-info btn-lg' type='submit'>See results</button>
+                    <button class='btn btn-success btn-lg' type='submit'>See results</button>
                 </form>
             @endif
             

@@ -8,7 +8,7 @@ fieldset {
     column-gap: 20px;
 }
 
-.form-check-label {
+.form-check-label.create-ticket {
     font-size: 1.5rem;
     color: brown;
     padding-left: 5px;
@@ -28,4 +28,14 @@ fieldset {
     justify-self: center !important;
     padding: 1rem 5rem !important;
     margin-bottom: 2rem;
+}
+
+/* some changes in bootstrap modal */
+.modal-body {
+    padding: 20px 20px 0px 20px !important;
+    text-align: center !important;
+}
+
+.modal-footer{
+    text-align: center !important;
 }

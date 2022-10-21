@@ -9,7 +9,7 @@
             @for ($i = $digits_range['min']; $i <= $digits_range['max']; $i++)
             <div class="form-check d-flex align-items-center">
                 <input type="checkbox" class="form-check-input" name="digits[]" value="{{ $i }}" id="{{ $i }}">
-                <label class="form-check-label" for="{{ $i }}">{{ $i }}</label>
+                <label class="form-check-label create-ticket" for="{{ $i }}">{{ $i }}</label>
             </div>
         @endfor
         </fieldset>
