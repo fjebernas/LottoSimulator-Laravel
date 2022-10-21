@@ -25,7 +25,7 @@
     <!-- bootbox library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
     {{-- custom JS --}}
-    <script src="/js/custom.js" defer></script>
+    @yield('customjs')
 </head>
 <body>
     <div id="app">

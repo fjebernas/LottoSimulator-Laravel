@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('customjs')
+    <script src="/js/welcome.js" defer></script>
+@endsection
+
 @section('content')
     <div class="container col-xxl-10 px-4 py-5">
         <div class="row flex-lg-row-reverse align-items-center g-5 py-5">

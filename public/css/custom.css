@@ -3,22 +3,46 @@ h1 {
     padding: 2rem 0;
 }
 
-fieldset {
-    height: fit-content;
-    column-gap: 20px;
-}
 
-.form-check-label.create-ticket {
-    font-size: 1.5rem;
-    color: brown;
-    padding-left: 5px;
-}
+
 
 .buttons {
-    padding-top: 2rem;
     display: flex;
     column-gap: 0.5rem;
 }
+
+
+
+
+fieldset {
+    max-width: 75%;
+    width: fit-content;
+    height: fit-content;
+    row-gap: 40px;
+    column-gap: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.4);
+    padding: 30px 10px 35px 40px;
+}
+
+.form-check.form-check-digits {
+    width: 45px;
+}
+
+input[type='checkbox'] {
+    transform: scale(1.5);
+}
+
+.form-check-label.create-ticket {
+    font-size: 1.2rem;
+    color: rgb(255, 119, 28);
+}
+
+
+
+
+
+
+
 
 .jumbotron {
     text-align: center !important;
@@ -29,6 +53,12 @@ fieldset {
     padding: 1rem 5rem !important;
     margin-bottom: 2rem;
 }
+
+
+
+
+
+
 
 /* some changes in bootstrap modal */
 .modal-body {

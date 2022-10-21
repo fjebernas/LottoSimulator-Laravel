@@ -74,7 +74,6 @@ class LottoController extends Controller
 
     private function getUniqueRandomDigit($roll_event_id) {
         $random_digit = null;
-
         do {
             $random_digit = rand(Ticket::$digits_range['min'], Ticket::$digits_range['max']);
         } while (Roll::where('roll_event_id', $roll_event_id)

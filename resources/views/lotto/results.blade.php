@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('customjs')
+    <script src="/js/lotto/results.js" defer></script>
+@endsection
+
 @section('content')
     <h1 class='custom-h1'>Lotto results: </h1>
 

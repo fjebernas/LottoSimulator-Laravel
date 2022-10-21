@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('customjs')
+    <script src="/js/ticket/index.js" defer></script>
+@endsection
+
 @section('content')
 <h1 class='custom-h1'>Your tickets:</h1>
 
