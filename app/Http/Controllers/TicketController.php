@@ -8,6 +8,11 @@ use Illuminate\Support\Facades\DB;
 
 class TicketController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index() {
 
         return view('ticket.index')
@@ -21,11 +26,11 @@ class TicketController extends Controller
             ->with('combination_count', Ticket::$combination_count)
             ->with('digits_range', Ticket::$digits_range);
     }
-
-    public function store() {
+    
+    public function store(Request $request) {
         $ticket = new Ticket();
 
-        $ticket->digits = request('digits');
+        $ticket->digits = $request->digits;
 
         $ticket->save();
 

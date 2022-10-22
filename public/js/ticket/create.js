@@ -2,15 +2,22 @@ var combinationCount = parseInt($('.concealed-data').attr('data-combination-coun
 var rangeMin = parseInt($('.concealed-data').attr('data-range-min'));
 var rangeMax = parseInt($('.concealed-data').attr('data-range-max'));
 
+// create button disabled by default
+$('#btn-create').addClass('disabled').prop('disabled', true);
+
 // for preventing the user to check checkboxes more than six
 $('input[type="checkbox"]').change(function(event) {
     $('input[type="checkbox"].form-check-input-digits').prop('disabled', false);
     if ($('input[type="checkbox"].form-check-input-digits:checked').length >= combinationCount) {
         event.preventDefault();
         $('input[type="checkbox"].form-check-input-digits').not(':checked').prop('disabled', true);
+        // enable create button
+        $('#btn-create').removeClass('disabled').prop('disabled', false);
     }
     else if ($('input[type="checkbox"].form-check-input-digits:checked').length < combinationCount) {
         $('input[type="checkbox"].form-check-input-digits').not(':checked').prop('disabled', false);
+        // disable create button
+        $('#btn-create').addClass('disabled').prop('disabled', true);
     }
 });
 

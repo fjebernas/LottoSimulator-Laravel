@@ -11,12 +11,16 @@
 @section('content')
     <h1 class='custom-h1'>Create new ticket:</h1>
 
-    <div class="form-check mb-3 ml-3">
-        <input class="form-check-input" type="checkbox" value="" id="chkbx-random-digits">
-        <label class="form-check-label text-muted" for="chkbx-random-digits">
-        Random digits
-        </label>
+    <div class="custom-container d-flex justify-content-between mb-2">
+        <h5 class="text-muted m-0">Select {{$combination_count}} digits:</h5>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="chkbx-random-digits">
+            <label class="form-check-label text-info" for="chkbx-random-digits">
+            Random digits
+            </label>
+        </div>
     </div>
+    
 
     <form action="/tickets" method="POST">
         @csrf
@@ -32,7 +36,7 @@
 
         <div class="buttons py-3">
             <a href="/tickets" class="btn btn-danger">Go back</a>
-            <button type="submit" class="btn btn-success">Submit</button>
+            <button id="btn-create" type="submit" class="btn btn-success">Submit</button>
         </div>
     </form>
 

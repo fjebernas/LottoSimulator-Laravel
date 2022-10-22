@@ -21,7 +21,7 @@
         <h1 class="display-4 py-0 my-0">
             <code class="text-white">
                 <!-- rolled digit shows here -->
-                @if ($rolled_digit !== '')
+                @isset ($rolled_digit)
                     {{ $rolled_digit }}
                 @else
                     --
@@ -70,9 +70,17 @@
                         <th scope='row'>{{ $ticket->id }}</td>
                         <td>{{ $ticket->created_at }}</td>
                         @foreach ($ticket->digits as $digit)
-                            <td>{{ $digit }}</td>
+                            @isset($rolls)
+                                @if (in_array($digit, $rolls))
+                                    <td class="bg-success text-white font-weight-bold text-warning">{{ $digit }}</td>
+                                @else
+                                    <td>{{ $digit }}</td>
+                                @endif
+                            @else
+                                <td>{{ $digit }}</td>
+                            @endisset
                         @endforeach
-                        <th scope='row'>{{ $ticket->roll_event_id }}</td>
+                        <th scope='row'>RE: {{ $ticket->roll_event_id }}</td>
                     </tr>
                 @endforeach
             @else

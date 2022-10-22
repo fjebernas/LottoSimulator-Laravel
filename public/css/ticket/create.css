@@ -1,3 +1,7 @@
+.custom-container {
+    width: 75%;
+}
+
 fieldset {
     max-width: 75%;
     width: fit-content;

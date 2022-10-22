@@ -10,6 +10,11 @@ use Illuminate\Support\Facades\DB;
 
 class LottoController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function start() {
         // create new roll event, set how many rolls and save to database
         $roll_event = new RollEvent();
@@ -22,14 +27,13 @@ class LottoController extends Controller
             ->with('tickets', Ticket::where('is_valid', true)->get())
             ->with('combination_count', Ticket::$combination_count)
             ->with('roll_event_id', $roll_event->id)
-            ->with('rolled_digit', '')
             ->with('rolls_left', $roll_event->rolls_left)
             ->with('msg', 'Roll event created with ID: ' . $roll_event->id . '. Valid tickets are registered.');
     }
 
-    public function roll() {
+    public function roll(Request $request) {
         // get the current roll event id through POST
-        $roll_event_id = request('roll_event_id');
+        $roll_event_id = $request->roll_event_id;
 
         $unique_random_digit = $this->getUniqueRandomDigit($roll_event_id);
         $this->storeRoll($unique_random_digit, $roll_event_id);
@@ -40,14 +44,17 @@ class LottoController extends Controller
             ->with('tickets', Ticket::where('roll_event_id', $roll_event_id)->get())
             ->with('combination_count', Ticket::$combination_count)
             ->with('roll_event_id', $roll_event_id)
-            ->with('rolled_digit', $unique_random_digit)
             ->with('rolls_left', RollEvent::where('id', $roll_event_id)
                                         ->value('rolls_left'))
+            ->with('rolled_digit', $unique_random_digit)
+            ->with('rolls', Roll::where('roll_event_id', $roll_event_id)
+                                ->pluck('rolled_digit')
+                                ->toArray())
             ->with('msg', 'RNG success. Rolled digit: ' . $unique_random_digit);
     }
 
-    public function showResults() {
-        $roll_event_id = request('roll_event_id');
+    public function showResults(Request $request) {
+        $roll_event_id = $request->roll_event_id;
 
         $this->setTicketsMatchedDigits($roll_event_id);
         $this->invalidateTickets($roll_event_id);
@@ -55,7 +62,8 @@ class LottoController extends Controller
 
         return view('lotto.results')
             ->with('rolls', Roll::where('roll_event_id', $roll_event_id)
-                                ->pluck('rolled_digit'))
+                                ->pluck('rolled_digit')
+                                ->toArray())
             ->with('tickets', Ticket::where('roll_event_id', $roll_event_id)->get())
             ->with('combination_count', Ticket::$combination_count);
     }

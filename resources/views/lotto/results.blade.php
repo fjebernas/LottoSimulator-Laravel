@@ -43,10 +43,14 @@
                         <th scope='row'>{{ $ticket->id }}</td>
                         <td>{{ $ticket->created_at }}</td>
                         @foreach ($ticket->digits as $digit)
-                            <td>{{ $digit }}</td>
+                            @if (in_array($digit, $rolls))
+                                <td class="bg-success text-white font-weight-bold text-warning">{{ $digit }}</td>
+                            @else
+                                <td>{{ $digit }}</td>
+                            @endif
                         @endforeach
                         <td>{{ $ticket->matched_digits }}</td>
-                        <th scope='row'>{{ $ticket->roll_event_id }}</td>
+                        <th scope='row'>RE: {{ $ticket->roll_event_id }}</td>
                     </tr>
                 @endforeach
             @else

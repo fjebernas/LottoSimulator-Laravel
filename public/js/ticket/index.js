@@ -20,5 +20,7 @@ $(document).on('click', '#btn-proceed', function(){
         }
     });
 
+    // bootbox.alert("This is the default alert!");
+
     return false;
 });
