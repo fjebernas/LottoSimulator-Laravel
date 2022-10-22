@@ -13,6 +13,6 @@ class Ticket extends Model
         'digits' => 'array'
     ];
     
-    public static $combination_count = '6';
-    public static $digits_range = array('min' => 1, 'max' => 42);
+    public static $combination_count = '3';
+    public static $digits_range = array('min' => 0, 'max' => 9);
 }

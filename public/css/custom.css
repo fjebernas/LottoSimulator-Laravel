@@ -22,6 +22,7 @@ fieldset {
     column-gap: 20px;
     border: 1px solid rgba(0, 0, 0, 0.4);
     padding: 30px 10px 35px 40px;
+    background-color: rgb(252, 252, 236);
 }
 
 .form-check.form-check-digits {

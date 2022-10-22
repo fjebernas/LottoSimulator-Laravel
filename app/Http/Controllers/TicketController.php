@@ -18,6 +18,7 @@ class TicketController extends Controller
     public function create() {
 
         return view('ticket.create')
+            ->with('combination_count', Ticket::$combination_count)
             ->with('digits_range', Ticket::$digits_range);
     }
 

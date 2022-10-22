@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    <h1 class='custom-h1'>/js/{{ Request::segment(1) }}/{{ Request::segment(2) }}.js</h1>
+    <h1 class='custom-h1'>Create new ticket:</h1>
 
     <div class="form-check mb-3 ml-3">
         <input class="form-check-input" type="checkbox" value="" id="chkbx-random-digits">
@@ -31,4 +31,11 @@
             <button type="submit" class="btn btn-success">Submit</button>
         </div>
     </form>
+
+    <!-- hidden div for holding digit range data to be used in js -->
+    <div class="d-none concealed-data" 
+        data-combination-count={{ $combination_count }}
+        data-range-min={{ $digits_range['min'] }} 
+        data-range-max={{ $digits_range['max'] }}>
+    </div>
 @endsection
