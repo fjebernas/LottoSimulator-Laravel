@@ -1,11 +1,15 @@
 @extends('layouts.app')
 
+@section('customcss')
+    <link rel="stylesheet" href="/css/lotto/roll.css">
+@endsection
+
 @section('customjs')
     <script src="/js/lotto/roll.js" defer></script>
 @endsection
 
 @section('content')
-    <h1 class='custom-h1'>It's RNG time.</h1>
+    <h1 class='custom-h1 pb-0'>It's RNG time.</h1>
 
 
 

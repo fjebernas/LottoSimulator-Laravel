@@ -1,0 +1,23 @@
+fieldset {
+    max-width: 75%;
+    width: fit-content;
+    height: fit-content;
+    row-gap: 40px;
+    column-gap: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.4);
+    padding: 30px 10px 35px 40px;
+    background-color: rgb(252, 252, 236);
+}
+
+.form-check.form-check-digits {
+    width: 45px;
+}
+
+input[type='checkbox'] {
+    transform: scale(1.5);
+}
+
+.form-check-label.create-ticket {
+    font-size: 1.2rem;
+    color: rgb(255, 119, 28);
+}

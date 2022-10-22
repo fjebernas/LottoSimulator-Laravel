@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('customcss')
+    <link rel="stylesheet" href="/css/ticket/index.css">
+@endsection
+
 @section('customjs')
     <script src="/js/ticket/index.js" defer></script>
 @endsection

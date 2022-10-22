@@ -15,8 +15,10 @@
 
     {{-- CSS bootstrap? --}}
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
-    {{-- custom CSS --}}
-    <link rel="stylesheet" href="/css/custom.css">
+    {{-- custom css for all pages --}}
+    <link rel="stylesheet" href="/css/common.css">
+    {{-- custom CSS per page --}}
+    @yield('customcss')
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>

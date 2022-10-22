@@ -1,0 +1,9 @@
+.jumbotron {
+    text-align: center !important;
+    width: fit-content !important;
+    height: fit-content !important;
+    align-self: center !important;
+    justify-self: center !important;
+    padding: 1rem 5rem !important;
+    margin-bottom: 2rem;
+}

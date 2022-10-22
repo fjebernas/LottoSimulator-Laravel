@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('customcss')
+    <link rel="stylesheet" href="/css/lotto/results.css">
+@endsection
+
 @section('customjs')
     <script src="/js/lotto/results.js" defer></script>
 @endsection

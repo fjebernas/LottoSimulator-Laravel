@@ -1,0 +1,8 @@
+h1 {
+    padding: 2rem 0;
+}
+
+.buttons {
+    display: flex;
+    column-gap: 0.5rem;
+}

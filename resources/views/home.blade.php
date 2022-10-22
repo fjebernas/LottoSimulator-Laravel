@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('customcss')
+    <link rel="stylesheet" href="/css/home.css">
+@endsection
+
 @section('customjs')
     <script src="/js/home.js" defer></script>
 @endsection
