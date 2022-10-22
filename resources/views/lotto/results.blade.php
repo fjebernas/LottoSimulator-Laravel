@@ -13,7 +13,7 @@
 
     <div class='rolls-container d-flex flex-row container'>
         @foreach ($rolls as $roll)
-            <div class='text-center card text-white bg-info mb-3' style='max-width: 10rem; margin-right: 10px;'>
+            <div class='text-center card text-white bg-gradient mb-3' style='background: #553491; max-width: 10rem; margin-right: 10px;'>
                 <div class='card-header'>Rolled digit</div>
                 <div class='card-body'>
                     <h1 class='card-title py-0'>{{ $roll }}</h1>
@@ -44,7 +44,7 @@
                         <td>{{ $ticket->created_at }}</td>
                         @foreach ($ticket->digits as $digit)
                             @if (in_array($digit, $rolls))
-                                <td class="bg-success text-white font-weight-bold text-warning">{{ $digit }}</td>
+                                <td class="bg-success fw-bold text-warning">{{ $digit }}</td>
                             @else
                                 <td>{{ $digit }}</td>
                             @endif
@@ -62,6 +62,6 @@
     </table>
 
     <div class="buttons">
-        <a href="/" class='btn btn-primary'>Back to home</a>
+        <a href="/" class='btn btn-warning'>Back to home</a>
     </div>
 @endsection

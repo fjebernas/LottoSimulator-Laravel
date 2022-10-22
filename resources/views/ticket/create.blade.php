@@ -11,12 +11,12 @@
 @section('content')
     <h1 class='custom-h1'>Create new ticket:</h1>
 
-    <div class="custom-container d-flex justify-content-between mb-2">
+    <div class="custom-container d-flex justify-content-between mb-1">
         <h5 class="text-muted m-0">Select {{$combination_count}} digits:</h5>
         <div class="form-check">
             <input class="form-check-input" type="checkbox" value="" id="chkbx-random-digits">
-            <label class="form-check-label text-info" for="chkbx-random-digits">
-            Random digits
+            <label class="form-check-label fs-5 text-info" for="chkbx-random-digits">
+                Random digits
             </label>
         </div>
     </div>

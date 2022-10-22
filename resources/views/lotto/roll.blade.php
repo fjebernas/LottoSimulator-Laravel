@@ -17,7 +17,7 @@
     <div class='alert alert-success'>{{ $msg }}</div>
     @endif
 
-    <div class="jumbotron bg-info text-white rounded">
+    <div class="jumbotron bg-gradient text-white rounded" style="background: #553491;">
         <h1 class="display-4 py-0 my-0">
             <code class="text-white">
                 <!-- rolled digit shows here -->
@@ -35,13 +35,13 @@
                     @csrf
                     {{-- for passing the roll event id --}}
                     <input type="hidden" name="roll_event_id" value="{{ $roll_event_id }}">
-                    <button class='btn btn-warning btn-lg' type='submit'>Roll!</button>
+                    <button class='btn bg-primary text-white btn-lg' type='submit'>Roll!</button>
                 </form>
             @else
                 <form action="/lotto/results" method="post">
                     @csrf
                     <input type="hidden" name="roll_event_id" value="{{ $roll_event_id }}">
-                    <button class='btn btn-success btn-lg' type='submit'>See results</button>
+                    <button class='btn btn-warning btn-lg' type='submit'>See results</button>
                 </form>
             @endif
             
@@ -72,7 +72,7 @@
                         @foreach ($ticket->digits as $digit)
                             @isset($rolls)
                                 @if (in_array($digit, $rolls))
-                                    <td class="bg-success text-white font-weight-bold text-warning">{{ $digit }}</td>
+                                    <td class="bg-success fw-bold text-warning">{{ $digit }}</td>
                                 @else
                                     <td>{{ $digit }}</td>
                                 @endif

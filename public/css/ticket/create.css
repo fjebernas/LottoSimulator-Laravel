@@ -18,10 +18,10 @@ fieldset {
 }
 
 input[type='checkbox'] {
-    transform: scale(1.5);
+    transform: scale(1.3);
 }
 
 .form-check-label.create-ticket {
     font-size: 1.2rem;
-    color: rgb(255, 119, 28);
+    color: rgb(236, 107, 22);
 }
