@@ -84,7 +84,7 @@
         </nav>
 
         <main class="py-5">
-            <div class="container d-flex flex-column">
+            <div class="container-md d-flex flex-column">
                 @yield('content')
             </div>
         </main>

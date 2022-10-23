@@ -31,6 +31,11 @@ $(document).ready(function($){
                 if (data['rolls_left'] == 0) {
                     $('#btn-roll-container').replaceWith(seeResultsBtn);
                 }
+                
+                // highlight all td of the matched digits in table
+                for (var i = 0; i < data['rolls'].length; i++) {
+                    $('#' + data['rolls'][i]).addClass('bg-success fw-bold text-warning');
+                }
 
                 // set notification msg
                 $('#notification-msg').text(data['msg']);

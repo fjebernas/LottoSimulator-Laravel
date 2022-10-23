@@ -27,7 +27,9 @@ Route::post('/tickets', [TicketController::class, 'store']);
 Route::get('/lotto/rolling', [LottoController::class, 'start']);
 Route::post('lotto/results', [LottoController::class, 'showResults']);
 
-// ajax
+/*
+* ajax
+*/
 Route::post('/lotto/rolling', [LottoController::class, 'store']);
 
 

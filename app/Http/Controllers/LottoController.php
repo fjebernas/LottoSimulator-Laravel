@@ -31,6 +31,9 @@ class LottoController extends Controller
             ->with('msg', 'Roll event created with ID: ' . $roll_event->id . '. Valid tickets are registered.');
     }
 
+    /*
+    * ajax
+    */
     public function store(Request $request) {
         // get the current roll event id through POST
         $roll_event_id = $request->roll_event_id;

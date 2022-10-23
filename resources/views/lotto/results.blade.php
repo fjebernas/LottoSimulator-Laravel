@@ -11,7 +11,7 @@
 @section('content')
     <h1 class='custom-h1'>Lotto results: </h1>
 
-    <div class='rolls-container d-flex flex-row container'>
+    <div class='rolls-container d-flex flex-row container flex-wrap'>
         @foreach ($rolls as $roll)
             <div class='text-center card text-white bg-gradient mb-3' style='background: #553491; max-width: 10rem; margin-right: 10px;'>
                 <div class='card-header'>Rolled digit</div>
@@ -24,42 +24,40 @@
 
     <h1 class='custom-h1'>Your tickets:</h1>
 
-    <table class="center-text table table-hover table-bordered text-center">
-        <thead class="text-white bg-secondary">
-            <tr>
-                <th scope="col" class="col-md-1">Ticket ID</th>
-                <th scope="col" class="col-md-2">Date created</th>
-                @for ($i = 1; $i <= $combination_count; $i++)
-                    <th scope='col' class='col-md-1'>Digit #{{ $i }}</th>
-                @endfor
-                <th scope="col" class="col-md-1">Matched digits</th>
-                <th scope="col" class="col-md-1">Roll event ID</th>
-            </tr>
-        </thead>
-        <tbody>
-            @if (count($tickets) > 0)
-                @foreach ($tickets as $ticket)
+    <div class="table-responsive">
+        <table class="center-text table table-hover table-bordered text-center">
+            <thead class="text-white bg-secondary">
+                <tr>
+                    <th scope="col" class="col-md-1">Ticket ID</th>
+                    @for ($i = 1; $i <= $combination_count; $i++)
+                        <th scope='col' class='col-md-1'>Digit #{{ $i }}</th>
+                    @endfor
+                    <th scope="col" class="col-md-1">Matched digits</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (count($tickets) > 0)
+                    @foreach ($tickets as $ticket)
+                        <tr>
+                            <th scope='row'>{{ $ticket->id }}</td>
+                            @foreach ($ticket->digits as $digit)
+                                @if (in_array($digit, $rolls))
+                                    <td class="bg-success fw-bold text-warning">{{ $digit }}</td>
+                                @else
+                                    <td>{{ $digit }}</td>
+                                @endif
+                            @endforeach
+                            <td>{{ $ticket->matched_digits }}</td>
+                        </tr>
+                    @endforeach
+                @else
                     <tr>
-                        <th scope='row'>{{ $ticket->id }}</td>
-                        <td>{{ $ticket->created_at }}</td>
-                        @foreach ($ticket->digits as $digit)
-                            @if (in_array($digit, $rolls))
-                                <td class="bg-success fw-bold text-warning">{{ $digit }}</td>
-                            @else
-                                <td>{{ $digit }}</td>
-                            @endif
-                        @endforeach
-                        <td>{{ $ticket->matched_digits }}</td>
-                        <th scope='row'>RE: {{ $ticket->roll_event_id }}</td>
-                    </tr>
-                @endforeach
-            @else
-                <tr>
-                    <td colspan="{{ 2 + $combination_count }}">No tickets</td>
-                <tr>
-            @endif
-        </tbody>
-    </table>
+                        <td colspan="{{ 2 + $combination_count }}">No tickets</td>
+                    <tr>
+                @endif
+            </tbody>
+        </table>
+    </div>
 
     <div class="buttons">
         <a href="/" class='btn btn-warning'>Back to home</a>
