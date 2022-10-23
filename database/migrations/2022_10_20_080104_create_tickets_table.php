@@ -15,12 +15,12 @@ return new class extends Migration
     {
         Schema::create('tickets', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
             $table->json('digits');
             $table->boolean('is_valid')->default(true)->nullable();
             $table->integer('matched_digits')->nullable();
             $table->integer('roll_event_id')->nullable();
             $table->string('owner');
+            $table->timestamps();
         });
     }
 

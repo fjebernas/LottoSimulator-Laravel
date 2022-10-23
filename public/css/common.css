@@ -6,3 +6,11 @@ h1 {
     display: flex;
     column-gap: 0.5rem;
 }
+
+.toast {
+    box-shadow: none !important;
+}
+
+.toast-message {
+    font-size: 1rem !important;
+}

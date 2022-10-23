@@ -15,6 +15,8 @@
 
     {{-- CSS bootstrap --}}
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    {{-- toastr css --}}
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.css" rel="stylesheet"/>
     {{-- custom css for all pages --}}
     <link rel="stylesheet" href="/css/common.css">
     {{-- custom CSS per page --}}
@@ -24,6 +26,8 @@
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <!-- bootbox library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.5.2/bootbox.min.js"></script>
+    {{-- toastr js --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script>
     {{-- custom JS --}}
     @yield('customjs')
 </head>
@@ -31,7 +35,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand fs-3" href="{{ url('/') }}">
                     {{ config('app.name', 'Lotto Game Simulator') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -45,7 +49,7 @@
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ms-auto">
+                    <ul class="navbar-nav ms-auto fs-5">
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))

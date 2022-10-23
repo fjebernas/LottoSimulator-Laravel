@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::create('roll_events', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
             $table->integer('rolls_left')->nullable();
             $table->boolean('is_finished')->default(false)->nullable();
+            $table->timestamps();
         });
     }
 

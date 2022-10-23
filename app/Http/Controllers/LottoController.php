@@ -46,7 +46,6 @@ class LottoController extends Controller
         return Response::json(array(
             'rolls_left' =>  RollEvent::where('id', $roll_event_id)->value('rolls_left'),
             'rolled_digit' => $unique_random_digit,
-            'rolls' => Roll::where('roll_event_id', $roll_event_id)->pluck('rolled_digit')->toArray(),
             'msg' => 'RNG success. Rolled digit: ' . $unique_random_digit
         ));
     }

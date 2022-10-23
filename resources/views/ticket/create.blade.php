@@ -11,7 +11,7 @@
 @section('content')
     <h1 class='custom-h1'>Create new ticket:</h1>
 
-    <div class="custom-container d-flex justify-content-between mb-1">
+    <div class="custom-container d-flex justify-content-between align-items-center mb-1">
         <h5 class="text-muted m-0">Select {{$combination_count}} digits:</h5>
         <div class="form-check">
             <input class="form-check-input" type="checkbox" value="" id="chkbx-random-digits">

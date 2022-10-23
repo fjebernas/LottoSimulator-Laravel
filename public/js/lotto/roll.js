@@ -1,10 +1,31 @@
-
-var roll_event_id = $('#roll_event_id').attr('value');
-var seeResultsBtn = "<input type='hidden' name='roll_event_id' value='" + roll_event_id + "'>\
-                    <button class='btn btn-warning btn-lg' type='submit'>See results</button>";
-
 $(document).ready(function($){
     
+    toastr.options = {
+        "closeButton": false,
+        "debug": false,
+        "newestOnTop": true,
+        "progressBar": true,
+        "positionClass": "toast-top-right",
+        "preventDuplicates": false,
+        "onclick": null,
+        "showDuration": "300",
+        "hideDuration": "1000",
+        "timeOut": "5000",
+        "extendedTimeOut": "1000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+    }
+    
+    
+    // toast notification for starting the roll event
+    toastr.info($('#notification-msg').attr('data-msg'));
+    
+    var roll_event_id = $('#roll_event_id').attr('value');
+    var seeResultsBtn = "<input type='hidden' name='roll_event_id' value='" + roll_event_id + "'>\
+                        <button class='btn btn-warning btn-lg' type='submit'>See results</button>";
+
     $("#btn-roll").click(function (e) {
         $.ajaxSetup({
             headers: {
@@ -32,13 +53,11 @@ $(document).ready(function($){
                     $('#btn-roll-container').replaceWith(seeResultsBtn);
                 }
                 
-                // highlight all td of the matched digits in table
-                for (var i = 0; i < data['rolls'].length; i++) {
-                    $('#' + data['rolls'][i]).addClass('bg-success fw-bold text-warning');
-                }
+                // highlight the td of the matched digit in table
+                $('#' + data['rolled_digit']).addClass('bg-success fw-bold text-warning');
 
-                // set notification msg
-                $('#notification-msg').text(data['msg']);
+                // toast notification msg
+                toastr.success(data['msg']);
             },
             error: function (data) {
                 console.log(data);

@@ -11,10 +11,6 @@
 @section('content')
     <h1 class='custom-h1 pb-0'>It's RNG time.</h1>
 
-
-
-    <div id='notification-msg' class='alert alert-success'>{{ $msg }}</div>
-
     <div class="jumbotron bg-gradient text-white rounded" style="background: #553491;">
         <h1 class="display-4 py-0 my-0">
             <code id='rolled-digit-container' class="text-white">
@@ -82,5 +78,8 @@
             </tbody>
         </table>
     </div>
+
+    {{-- notification - to be used in js --}}
+    <div id='notification-msg' class='d-none' data-msg='{{ $msg }}'></div>
     
 @endsection

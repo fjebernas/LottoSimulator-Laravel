@@ -47,7 +47,7 @@
                                     <td>{{ $digit }}</td>
                                 @endif
                             @endforeach
-                            <td>{{ $ticket->matched_digits }}</td>
+                            <th scope='row'>{{ $ticket->matched_digits }}</td>
                         </tr>
                     @endforeach
                 @else
