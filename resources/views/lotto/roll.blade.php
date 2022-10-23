@@ -13,13 +13,11 @@
 
 
 
-    @if ($msg !== '')
-    <div class='alert alert-success'>{{ $msg }}</div>
-    @endif
+    <div id='notification-msg' class='alert alert-success'>{{ $msg }}</div>
 
     <div class="jumbotron bg-gradient text-white rounded" style="background: #553491;">
         <h1 class="display-4 py-0 my-0">
-            <code class="text-white">
+            <code id='rolled-digit-container' class="text-white">
                 <!-- rolled digit shows here -->
                 @isset ($rolled_digit)
                     {{ $rolled_digit }}
@@ -30,20 +28,15 @@
         </h1>
         <p class="lead">Rolled number</p>
         <p class="lead">
-            @if ($rolls_left > 0)
-                <form action="/lotto/rolling" method="post">
-                    @csrf
-                    {{-- for passing the roll event id --}}
-                    <input type="hidden" name="roll_event_id" value="{{ $roll_event_id }}">
-                    <button class='btn bg-primary text-white btn-lg' type='submit'>Roll!</button>
-                </form>
-            @else
-                <form action="/lotto/results" method="post">
-                    @csrf
-                    <input type="hidden" name="roll_event_id" value="{{ $roll_event_id }}">
-                    <button class='btn btn-warning btn-lg' type='submit'>See results</button>
-                </form>
-            @endif
+            {{-- form to be used only after rolling is done --}}
+            <form action='/lotto/results' method='post'>
+                @csrf
+                {{-- button used by ajax and to be replace by button that uses the form tag --}}
+                <div id="btn-roll-container">
+                    <input id="roll_event_id" type="hidden" name="roll_event_id" value="{{ $roll_event_id }}">
+                    <button id='btn-roll' class='btn bg-primary text-white btn-lg' type='button'>Roll!</button>
+                </div>
+            </form>
             
         </p>
     </div>

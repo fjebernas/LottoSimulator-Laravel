@@ -15,7 +15,7 @@ $(document).on('click', '#btn-proceed', function(){
         callback: function (result) {
 
             if(result==true){
-                window.location.href = "/lotto/start";
+                window.location.href = "/lotto/rolling";
             }
         }
     });

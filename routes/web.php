@@ -24,9 +24,11 @@ Route::get('/tickets', [TicketController::class, 'index']);
 Route::get('/tickets/create', [TicketController::class, 'create']);
 Route::post('/tickets', [TicketController::class, 'store']);
 
-Route::get('/lotto/start', [LottoController::class, 'start']);
-Route::post('/lotto/rolling', [LottoController::class, 'roll']);
+Route::get('/lotto/rolling', [LottoController::class, 'start']);
 Route::post('lotto/results', [LottoController::class, 'showResults']);
+
+// ajax
+Route::post('/lotto/rolling', [LottoController::class, 'store']);
 
 
 Auth::routes();

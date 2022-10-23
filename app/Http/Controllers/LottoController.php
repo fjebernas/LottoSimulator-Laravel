@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\RollEvent;
 use App\Models\Ticket;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Response;
 
 class LottoController extends Controller
 {
@@ -27,11 +28,10 @@ class LottoController extends Controller
             ->with('tickets', Ticket::where('is_valid', true)->get())
             ->with('combination_count', Ticket::$combination_count)
             ->with('roll_event_id', $roll_event->id)
-            ->with('rolls_left', $roll_event->rolls_left)
             ->with('msg', 'Roll event created with ID: ' . $roll_event->id . '. Valid tickets are registered.');
     }
 
-    public function roll(Request $request) {
+    public function store(Request $request) {
         // get the current roll event id through POST
         $roll_event_id = $request->roll_event_id;
 
@@ -39,18 +39,13 @@ class LottoController extends Controller
         $this->storeRoll($unique_random_digit, $roll_event_id);
 
         $this->decrementRollsLeft($roll_event_id);
-        
-        return view('lotto.roll')
-            ->with('tickets', Ticket::where('roll_event_id', $roll_event_id)->get())
-            ->with('combination_count', Ticket::$combination_count)
-            ->with('roll_event_id', $roll_event_id)
-            ->with('rolls_left', RollEvent::where('id', $roll_event_id)
-                                        ->value('rolls_left'))
-            ->with('rolled_digit', $unique_random_digit)
-            ->with('rolls', Roll::where('roll_event_id', $roll_event_id)
-                                ->pluck('rolled_digit')
-                                ->toArray())
-            ->with('msg', 'RNG success. Rolled digit: ' . $unique_random_digit);
+
+        return Response::json(array(
+            'rolls_left' =>  RollEvent::where('id', $roll_event_id)->value('rolls_left'),
+            'rolled_digit' => $unique_random_digit,
+            'rolls' => Roll::where('roll_event_id', $roll_event_id)->pluck('rolled_digit')->toArray(),
+            'msg' => 'RNG success. Rolled digit: ' . $unique_random_digit
+        ));
     }
 
     public function showResults(Request $request) {
