@@ -16,11 +16,29 @@
             <div class='text-center card text-white bg-gradient mb-3' style='background: #553491; max-width: 10rem; margin-right: 10px;'>
                 <div class='card-header'>Rolled digit</div>
                 <div class='card-body'>
-                    <h1 class='card-title py-0'>{{ $roll }}</h1>
+                    <h1 class='card-title py-0'>
+                        <code class="text-white fs-1">
+                            {{ $roll }}
+                        </code>
+                    </h1>
                 </div>
             </div>
         @endforeach
     </div>
+
+    @foreach ($tickets as $ticket)
+        @if ($ticket->matched_digits > 5)
+            <div class='alert alert-success'>Congratulations! You won 100,000,000 robux!</div>
+        @elseif ($ticket->matched_digits > 4)
+            <div class='alert alert-success'>Congratulations! You won 10,000 robux!</div>
+        @elseif ($ticket->matched_digits > 3)
+            <div class='alert alert-success'>Congratulations! You won 1000 robux!</div>
+        @elseif ($ticket->matched_digits > 2)
+            <div class='alert alert-success'>Congratulations! You won 100 robux!</div>
+        @elseif ($ticket->matched_digits > 1)
+            <div class='alert alert-success'>Congratulations! You won 20 robux!</div>
+        @endif
+    @endforeach
 
     <h1 class='custom-h1'>Your tickets:</h1>
 

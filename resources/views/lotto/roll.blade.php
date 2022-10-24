@@ -15,11 +15,7 @@
         <h1 class="display-4 py-0 my-0">
             <code id='rolled-digit-container' class="text-white">
                 <!-- rolled digit shows here -->
-                @isset ($rolled_digit)
-                    {{ $rolled_digit }}
-                @else
-                    --
-                @endif
+                --
             </code>
         </h1>
         <p class="lead">Rolled number</p>
@@ -64,7 +60,7 @@
                                         <td>{{ $digit }}</td>
                                     @endif
                                 @else
-                                    <td id={{ $digit }}>{{ $digit }}</td>
+                                    <td class={{ $digit }}>{{ $digit }}</td>
                                 @endisset
                             @endforeach
                         </tr>

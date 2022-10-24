@@ -2,6 +2,10 @@ h1 {
     padding: 2rem 0;
 }
 
+table {
+    background-color: #fff;
+}
+
 .buttons {
     display: flex;
     column-gap: 0.5rem;

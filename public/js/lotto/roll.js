@@ -54,7 +54,7 @@ $(document).ready(function($){
                 }
                 
                 // highlight the td of the matched digit in table
-                $('#' + data['rolled_digit']).addClass('bg-success fw-bold text-warning');
+                $('.' + data['rolled_digit']).addClass('bg-success fw-bold text-warning');
 
                 // toast notification msg
                 toastr.success(data['msg']);

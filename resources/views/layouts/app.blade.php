@@ -28,6 +28,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.5.2/bootbox.min.js"></script>
     {{-- toastr js --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script>
+    {{-- seed --}}
+    <script src="//cdnjs.cloudflare.com/ajax/libs/seedrandom/3.0.5/seedrandom.min.js"></script>
     {{-- custom JS --}}
     @yield('customjs')
 </head>
@@ -51,6 +53,9 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto fs-5">
                         <!-- Authentication Links -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="records/leaderboards">Leaderboards</a>
+                        </li>
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">

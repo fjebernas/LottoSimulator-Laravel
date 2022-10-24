@@ -10,7 +10,7 @@ class Ticket extends Model
     use HasFactory;
 
     protected $casts = [
-        'digits' => 'array'
+        'digits' => 'array',
     ];
     
     public static $combination_count = '6';

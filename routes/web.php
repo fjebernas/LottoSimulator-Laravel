@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\LottoController;
+use App\Http\Controllers\RecordsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +33,7 @@ Route::post('lotto/results', [LottoController::class, 'showResults']);
 */
 Route::post('/lotto/rolling', [LottoController::class, 'store']);
 
+Route::get('/records/leaderboards', [RecordsController::class, 'showLeaderboards']);
 
 Auth::routes();
 
