@@ -25,7 +25,11 @@
                 @if (count($users) > 0)
                     @foreach ($users as $user)
                         <tr>
-                            <td scope='row' class="">{{ $user->name }}</td>
+                            @if ($loop->first)
+                                <td scope='row' class="">♛ {{ $user->name }}</td>
+                            @else
+                                <td scope='row' class="">{{ $user->name }}</td>
+                            @endif
                             <td scope='row' class="">{{ $user->tickets_created }}</td>
                             <td scope='row' class="">{{ $user->roll_events_participated }}</td>
                             <td scope='row' class="text-success">₱{{ $user->money }}</td>

@@ -48,6 +48,8 @@ $(document).ready(function($){
                 // display rolled digit in jumbotron
                 $('#rolled-digit-container').text(data['rolled_digit']);
 
+                $('#rolls-left-container').text('Rolls left: ' + data['rolls_left']);
+
                 // change jumbotron button when rolls left is 0
                 if (data['rolls_left'] == 0) {
                     $('#btn-roll-container').replaceWith(seeResultsBtn);

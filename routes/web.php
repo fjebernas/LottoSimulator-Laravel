@@ -3,7 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\TicketController;
-use App\Http\Controllers\LottoController;
+use App\Http\Controllers\Lotto\RollEventStarter;
+use App\Http\Controllers\Lotto\RollController;
+use App\Http\Controllers\Lotto\ResultsController;
 use App\Http\Controllers\RecordsController;
 
 /*
@@ -25,15 +27,13 @@ Route::get('/tickets', [TicketController::class, 'index']);
 Route::get('/tickets/create', [TicketController::class, 'create']);
 Route::post('/tickets', [TicketController::class, 'store']);
 
-Route::get('/lotto/rolling', [LottoController::class, 'start']);
-Route::post('lotto/results', [LottoController::class, 'showResults']);
-
-/*
-* ajax
-*/
-Route::post('/lotto/rolling', [LottoController::class, 'store']);
+Route::get('/lotto/rolling', RollEventStarter::class);
+Route::post('/lotto/rolling', RollController::class);
+Route::post('/lotto/results', ResultsController::class);
 
 Route::get('/records/leaderboards', [RecordsController::class, 'showLeaderboards']);
+
+
 
 Auth::routes();
 

@@ -12,6 +12,7 @@
     <h1 class='custom-h1 pb-0'>It's RNG time.</h1>
 
     <div class="jumbotron bg-gradient text-white rounded" style="background: #553491;">
+        <h6 id="rolls-left-container" class="text-center py-0 my-0">Rolls left: {{ $rolls_left }}</h6>
         <h1 class="display-4 py-0 my-0">
             <code id='rolled-digit-container' class="text-white">
                 <!-- rolled digit shows here -->
