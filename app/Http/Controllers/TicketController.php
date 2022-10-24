@@ -17,7 +17,9 @@ class TicketController extends Controller
     public function index() {
 
         return view('ticket.index')
-            ->with('tickets', Ticket::where('is_valid', true)->get())
+            ->with('tickets', Ticket::where('owner', Auth::user()->name)
+                                    ->where('is_valid', true)
+                                    ->get())
             ->with('combination_count', Ticket::$combination_count);
     }
 
@@ -33,10 +35,23 @@ class TicketController extends Controller
 
         $ticket->owner = Auth::user()->name;
         $ticket->digits = $request->digits;
-
         $ticket->save();
+
+        $this->incrementTicketsCreated();
 
         return redirect('/tickets')
             ->with('msg', 'Ticket successfully created.');
+    }
+
+    /*
+    *
+    * sub functions
+    *
+    */
+
+    private function incrementTicketsCreated() {
+        DB::table('users')
+            ->where('id', Auth::id())
+            ->increment('tickets_created');
     }
 }

@@ -27,16 +27,16 @@
     </div>
 
     @foreach ($tickets as $ticket)
-        @if ($ticket->matched_digits > 5)
-            <div class='alert alert-success'>Congratulations! You won 100,000,000 robux!</div>
-        @elseif ($ticket->matched_digits > 4)
-            <div class='alert alert-success'>Congratulations! You won 10,000 robux!</div>
-        @elseif ($ticket->matched_digits > 3)
-            <div class='alert alert-success'>Congratulations! You won 1000 robux!</div>
-        @elseif ($ticket->matched_digits > 2)
-            <div class='alert alert-success'>Congratulations! You won 100 robux!</div>
-        @elseif ($ticket->matched_digits > 1)
-            <div class='alert alert-success'>Congratulations! You won 20 robux!</div>
+        @if ($ticket->matched_digits == 6)
+            <div class='alert alert-success'>Congratulations! You won 100,000,000 pesos!</div>
+        @elseif ($ticket->matched_digits == 5)
+            <div class='alert alert-success'>Congratulations! You won 100,000 pesos!</div>
+        @elseif ($ticket->matched_digits == 4)
+            <div class='alert alert-success'>Congratulations! You won 1000 pesos!</div>
+        @elseif ($ticket->matched_digits == 3)
+            <div class='alert alert-success'>Congratulations! You won 500 pesos!</div>
+        @elseif ($ticket->matched_digits == 2)
+            <div class='alert alert-success'>Congratulations! You won 100 pesos!</div>
         @endif
     @endforeach
 

@@ -15,27 +15,25 @@
         <table class="center-text table table-hover table-bordered text-center">
             <thead class="text-white bg-secondary">
                 <tr>
-                    <th scope="col" class="col-md-1">User ID</th>
                     <th scope="col" class="col-md-1">Name</th>
                     <th scope="col" class="col-md-1">Tickets made</th>
                     <th scope="col" class="col-md-1">Roll events participated</th>
-                    <th scope="col" class="col-md-1">Robux</th>
+                    <th scope="col" class="col-md-1">Money</th>
                 </tr>
             </thead>
             <tbody>
                 @if (count($users) > 0)
                     @foreach ($users as $user)
                         <tr>
-                            <th scope='row' class="">{{ $user->id }}</td>
                             <td scope='row' class="">{{ $user->name }}</td>
-                            <td scope='row' class=""></td>
-                            <td scope='row' class=""></td>
-                            <td scope='row' class=""></td>
+                            <td scope='row' class="">{{ $user->tickets_created }}</td>
+                            <td scope='row' class="">{{ $user->roll_events_participated }}</td>
+                            <td scope='row' class="text-success">₱{{ $user->money }}</td>
                         </tr>
                     @endforeach
                 @else
                     <tr>
-                        <td colspan="{{ 2 + $combination_count }}">No users</td>
+                        <td colspan="4">No users</td>
                     <tr>
                 @endif
                 

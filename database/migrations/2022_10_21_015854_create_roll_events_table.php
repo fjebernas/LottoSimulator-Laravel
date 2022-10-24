@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->integer('rolls_left')->nullable();
             $table->boolean('is_finished')->default(false)->nullable();
+            $table->integer('money_awarded')->default(0);
             $table->timestamps();
         });
     }

@@ -9,6 +9,6 @@ class RecordsController extends Controller
 {
     public function showLeaderboards() {
         return view('records.leaderboards')
-            ->with('users', User::all());
+            ->with('users', User::orderBy('money', 'desc')->get());
     }
 }
