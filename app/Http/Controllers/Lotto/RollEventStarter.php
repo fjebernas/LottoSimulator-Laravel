@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Lotto;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\TicketController;
 use App\Models\RollEvent;
 use App\Models\Ticket;
 use Illuminate\Support\Facades\DB;
@@ -19,10 +20,17 @@ class RollEventStarter extends Controller
      * Handle the incoming request.
      *
      * 
-     * @return \Illuminate\Contracts\View\View
+     * @return \Illuminate\Http\Responses
      */
     public function __invoke()
     {
+        // check if there are valid tickets, if none redirect
+        if (count(Ticket::where('is_valid', true)->get()) == 0) {
+            return redirect()->action(
+                [TicketController::class, 'index']
+            )->with('msg', 'You have no tickets.');
+        }
+        
         // create new roll event, set how many rolls and save to database
         $roll_event = new RollEvent();
         $roll_event->rolls_left = Ticket::$combination_count;
@@ -41,14 +49,28 @@ class RollEventStarter extends Controller
             ->with('msg', 'Roll event created with ID: ' . $roll_event->id . '. Valid tickets are registered.');
     }
 
-    private function registerValidTickets($roll_event_id) {
+    /**
+     * 
+     *
+     * @param int $roll_event_id
+     * @return void
+     */
+    private function registerValidTickets($roll_event_id)
+    {
         DB::table('tickets')
             ->where('owner', Auth::user()->name)
             ->where('is_valid', true)
             ->update(['roll_event_id' => $roll_event_id]);
     }
 
-    private function incrementRollEventsParticipated() {
+    /**
+     * 
+     *
+     * 
+     * @return void
+     */
+    private function incrementRollEventsParticipated()
+    {
         DB::table('users')
             ->where('id', Auth::id())
             ->increment('roll_events_participated');

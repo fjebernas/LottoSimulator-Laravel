@@ -20,7 +20,7 @@ class ResultsController extends Controller
      * Handle the incoming request.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Contracts\View\View
+     * @return \Illuminate\Http\Response
      */
     public function __invoke(Request $request)
     {
@@ -47,7 +47,8 @@ class ResultsController extends Controller
      * @param int $roll_event_id
      * @return void
      */
-    private function setTicketsMatchedDigits($roll_event_id) {
+    private function setTicketsMatchedDigits($roll_event_id)
+    {
         $tickets = Ticket::where('roll_event_id', $roll_event_id)
                         ->where('owner', Auth::user()->name)
                         ->get();
@@ -62,7 +63,8 @@ class ResultsController extends Controller
      * @param int $roll_event_id @param int $ticket_id
      * @return void
      */
-    private function setMatchedDigits($roll_event_id, $ticket_id) {
+    private function setMatchedDigits($roll_event_id, $ticket_id)
+    {
         DB::table('tickets')
             ->where('id', $ticket_id)
             ->update(['matched_digits' => $this->getMatchedDigits($roll_event_id, $ticket_id)]);
@@ -74,7 +76,8 @@ class ResultsController extends Controller
      * @param int $roll_event_id @param int $ticket_id
      * @return int $counter
      */
-    private function getMatchedDigits($roll_event_id, $ticket_id) {
+    private function getMatchedDigits($roll_event_id, $ticket_id)
+    {
         $counter = 0;
         $rolled_digits = Roll::where('roll_event_id', $roll_event_id)
                             ->pluck('rolled_digit');
@@ -93,7 +96,8 @@ class ResultsController extends Controller
      * @param int $roll_event_id
      * @return void
      */
-    private function addMoney($roll_event_id) {
+    private function addMoney($roll_event_id)
+    {
         DB::table('users')
             ->where('id', Auth::id())
             ->increment('money', $this->calculateMoneyToAdd($roll_event_id));
@@ -105,7 +109,8 @@ class ResultsController extends Controller
      * @param int $roll_event_id
      * @return int $moneyToAdd
      */
-    private function calculateMoneyToAdd($roll_event_id) {
+    private function calculateMoneyToAdd($roll_event_id)
+    {
         $tickets = Ticket::where('roll_event_id', $roll_event_id)
                         ->where('owner', Auth::user()->name)
                         ->get();
@@ -132,7 +137,8 @@ class ResultsController extends Controller
      * @param int $roll_event_id
      * @return void
      */
-    private function invalidateTickets($roll_event_id) {
+    private function invalidateTickets($roll_event_id)
+    {
         DB::table('tickets')
             ->where('owner', Auth::user()->name)
             ->where('roll_event_id', $roll_event_id)
@@ -145,7 +151,8 @@ class ResultsController extends Controller
      * @param int $roll_event_id
      * @return void
      */
-    private function closeRollEvent($roll_event_id) {
+    private function closeRollEvent($roll_event_id)
+    {
         $this->recordMoneyAwarded($roll_event_id);
         DB::table('roll_events')
             ->where('id', $roll_event_id)
@@ -158,7 +165,8 @@ class ResultsController extends Controller
      * @param int $roll_event_id
      * @return void
      */
-    private function recordMoneyAwarded($roll_event_id) {
+    private function recordMoneyAwarded($roll_event_id)
+    {
         DB::table('roll_events')
             ->where('id', $roll_event_id)
             ->increment('money_awarded', $this->calculateMoneyToAdd($roll_event_id));

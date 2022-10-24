@@ -18,7 +18,6 @@ $(document).ready(function($){
         "hideMethod": "fadeOut"
     }
     
-    
     // toast notification for starting the roll event
     toastr.info($('#notification-msg').attr('data-msg'));
     

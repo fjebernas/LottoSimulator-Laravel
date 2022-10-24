@@ -37,4 +37,6 @@ Route::get('/records/leaderboards', [RecordsController::class, 'showLeaderboards
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// temporary home
+Route::get('/home', [TicketController::class, 'index']);

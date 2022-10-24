@@ -47,7 +47,8 @@ class RollController extends Controller
      * @param  int $roll_event_id
      * @return int $random_digit
      */
-    private function getUniqueRandomDigit($roll_event_id) {
+    private function getUniqueRandomDigit($roll_event_id)
+    {
         $random_digit = null;
         do {
             $random_digit = rand(Ticket::$digits_range['min'], Ticket::$digits_range['max']);
@@ -64,7 +65,8 @@ class RollController extends Controller
      * @param  int $digit @param  int $roll_event_id
      * @return void
      */
-    private function storeRoll($digit, $roll_event_id) {
+    private function storeRoll($digit, $roll_event_id)
+    {
         $roll = new Roll();
         $roll->rolled_digit = $digit;
         $roll->roll_event_id = $roll_event_id;
@@ -77,7 +79,8 @@ class RollController extends Controller
      * @param  int $roll_event_id
      * @return void
      */
-    private function decrementRollsLeft($roll_event_id) {
+    private function decrementRollsLeft($roll_event_id)
+    {
         DB::table('roll_events')
             ->where('id', $roll_event_id)
             ->decrement('rolls_left');
