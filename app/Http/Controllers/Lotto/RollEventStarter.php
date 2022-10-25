@@ -25,7 +25,9 @@ class RollEventStarter extends Controller
     public function __invoke()
     {
         // check if there are valid tickets, if none redirect
-        if (count(Ticket::where('is_valid', true)->get()) == 0) {
+        if (count(Ticket::where('owner', Auth::user()->name)
+                        ->where('is_valid', true)
+                        ->get()) == 0) {
             return redirect()->action(
                 [TicketController::class, 'index']
             )->with('msg', 'You have no tickets.');
