@@ -37,8 +37,7 @@ class ResultsController extends Controller
                                 ->toArray())
             ->with('tickets', Ticket::where('owner', Auth::user()->name)
                                     ->where('roll_event_id', $roll_event_id)
-                                    ->get())
-            ->with('combination_count', Ticket::$combination_count);
+                                    ->get());
     }
 
     /**

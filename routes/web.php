@@ -34,6 +34,11 @@ Route::post('/lotto/results', ResultsController::class);
 Route::get('/records/leaderboards', [RecordsController::class, 'showLeaderboards']);
 
 
+// protect this invalid routes
+Route::get('/lotto/results', function(){
+    return back();
+});
+
 
 Auth::routes();
 

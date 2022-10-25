@@ -14,22 +14,37 @@ class TicketController extends Controller
         $this->middleware('auth');
     }
 
-    public function index() {
+    /** list all tickets
+     *
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function index(Request $request) {
 
         return view('ticket.index')
             ->with('tickets', Ticket::where('owner', Auth::user()->name)
                                     ->where('is_valid', true)
-                                    ->get())
-            ->with('combination_count', Ticket::$combination_count);
+                                    ->get());
     }
 
-    public function create() {
+    /** show the form for creating a ticket
+     *
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function create(Request $request) {
 
-        return view('ticket.create')
-            ->with('combination_count', Ticket::$combination_count)
-            ->with('digits_range', Ticket::$digits_range);
+        return view('ticket.create');
     }
     
+    /** store the new ticket in tickets table
+     *
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function store(Request $request) {
         $ticket = new Ticket();
 
@@ -43,12 +58,13 @@ class TicketController extends Controller
             ->with('msg', 'Ticket successfully created.');
     }
 
-    /*
-    *
-    * sub functions
-    *
-    */
-
+    
+    /** increment tickets_created for a user in users table
+     *
+     *
+     * 
+     * @return void
+     */
     private function incrementTicketsCreated() {
         DB::table('users')
             ->where('id', Auth::id())

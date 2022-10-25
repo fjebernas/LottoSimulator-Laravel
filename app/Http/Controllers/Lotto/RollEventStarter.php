@@ -47,7 +47,6 @@ class RollEventStarter extends Controller
             ->with('tickets', Ticket::where('owner', Auth::user()->name)
                                     ->where('is_valid', true)
                                     ->get())
-            ->with('combination_count', Ticket::$combination_count)
             ->with('msg', 'Roll event created with ID: ' . $roll_event->id . '. Valid tickets are registered.');
     }
 
