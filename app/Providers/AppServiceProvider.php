@@ -25,7 +25,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        View::share('combination_count', Ticket::$combination_count);
-        View::share('digits_range', Ticket::$digits_range);
+        //
     }
 }

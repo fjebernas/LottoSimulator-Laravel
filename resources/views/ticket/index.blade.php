@@ -21,7 +21,7 @@
             <tr>
             <th scope="col" class="col-md-1">Ticket ID</th>
             <th scope="col" class="col-md-2">Date created</th>
-            @for ($i = 1; $i <= $combination_count; $i++)
+            @for ($i = 1; $i <= session('combination_count'); $i++)
                 <th scope='col' class='col-md-1'>Digit #{{ $i }}</th>
             @endfor
             </tr>
@@ -39,7 +39,7 @@
                 @endforeach
             @else
                 <tr>
-                    <td colspan="{{ 2 + $combination_count }}">No tickets</td>
+                    <td colspan="{{ 2 + session('combination_count') }}">No tickets</td>
                 <tr>
             @endif
             

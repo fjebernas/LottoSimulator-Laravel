@@ -18,7 +18,7 @@
                 <h1 class="display-5 fw-bold lh-1 mb-3">Lotto Game Simulator</h1>
                 <p class="lead">A lottery is a form of gambling that involves the drawing of numbers at random for a prize. Some governments outlaw lotteries, while others endorse it to the extent of organizing a national or state lottery. It is common to find some degree of regulation of lottery by governments.</p>
                 <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-                    <a href="/tickets" class="btn btn-primary btn-lg px-4 me-md-2">Play now</a>
+                    <a href="/menu" class="btn btn-primary btn-lg px-4 me-md-2">Play now</a>
                 </div>
             </div>
         </div>

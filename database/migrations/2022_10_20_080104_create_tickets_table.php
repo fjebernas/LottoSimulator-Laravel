@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('tickets', function (Blueprint $table) {
             $table->id();
+            $table->string('lotto_type');
             $table->json('digits');
             $table->boolean('is_valid')->default(true)->nullable();
             $table->integer('matched_digits')->nullable();

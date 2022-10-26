@@ -30,7 +30,7 @@ class RollEventStarter extends Controller
         
         // create new roll event, set how many rolls and save to database
         $roll_event = new RollEvent();
-        $roll_event->rolls_left = Ticket::$combination_count;
+        $roll_event->rolls_left = session('combination_count');
         $roll_event->save();
 
         $this->registerValidTickets($roll_event->id);
@@ -40,6 +40,7 @@ class RollEventStarter extends Controller
             ->with('roll_event_id', $roll_event->id)
             ->with('rolls_left', RollEvent::where('id', $roll_event->id)->value('rolls_left'))
             ->with('tickets', Ticket::where('owner', Auth::user()->name)
+                                    ->where('lotto_type', session('lotto_type'))
                                     ->where('is_valid', true)
                                     ->get())
             ->with('msg', 'Roll event created with ID: ' . $roll_event->id . '. Valid tickets are registered.');

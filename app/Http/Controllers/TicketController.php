@@ -19,6 +19,7 @@ class TicketController extends Controller
 
         return view('ticket.index')
             ->with('tickets', Ticket::where('owner', Auth::user()->name)
+                                    ->where('lotto_type', session('lotto_type'))
                                     ->where('is_valid', true)
                                     ->get());
     }
@@ -44,6 +45,7 @@ class TicketController extends Controller
         $ticket = new Ticket();
 
         $ticket->owner = Auth::user()->name;
+        $ticket->lotto_type = session('lotto_type');
         $ticket->digits = $request->digits;
         $ticket->save();
 

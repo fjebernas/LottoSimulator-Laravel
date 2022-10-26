@@ -31,6 +31,7 @@ class ResultsController extends Controller
                                 ->pluck('rolled_digit')
                                 ->toArray())
             ->with('tickets', Ticket::where('owner', Auth::user()->name)
+                                    ->where('lotto_type', session('lotto_type'))
                                     ->where('roll_event_id', $roll_event_id)
                                     ->get());
     }

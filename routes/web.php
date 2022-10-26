@@ -7,6 +7,7 @@ use App\Http\Controllers\Lotto\RollEventStarter;
 use App\Http\Controllers\Lotto\RollController;
 use App\Http\Controllers\Lotto\ResultsController;
 use App\Http\Controllers\RecordsController;
+use App\Http\Controllers\MenuController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +25,11 @@ Route::get('/', function () {
 });
 
 Route::middleware(['auth'])->group(function(){
+    Route::controller(MenuController::class)->group(function(){
+        Route::get('/menu', 'menu');
+        Route::get('/menu/set', 'setSessionDataAndRedirect');
+    });
+
     Route::controller(TicketController::class)->group(function(){
         Route::get('/tickets', 'index');
         Route::get('/tickets/create', 'create');
@@ -50,4 +56,4 @@ Auth::routes();
 
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 // temporary home
-Route::get('/home', [TicketController::class, 'index']);
+Route::get('/home', [MenuController::class, 'menu']);

@@ -46,7 +46,7 @@ class RollController extends Controller
     {
         $random_digit = null;
         do {
-            $random_digit = rand(Ticket::$digits_range['min'], Ticket::$digits_range['max']);
+            $random_digit = rand(session('digits_range')['min'], session('digits_range')['max']);
         } while (Roll::where('roll_event_id', $roll_event_id)
                     ->where('rolled_digit', $random_digit)
                     ->exists());
