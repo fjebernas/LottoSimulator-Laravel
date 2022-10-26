@@ -35,8 +35,14 @@
         </fieldset>
 
         <div class="buttons py-3">
-            <a href="/tickets" class="btn btn-danger">Go back</a>
-            <button id="btn-create" type="submit" class="btn btn-success">Submit</button>
+            <a href="/tickets" class="btn btn-danger d-flex align-items-center">
+                <box-icon name='arrow-back' color='white'></box-icon>
+                Go back
+            </a>
+            <button id="btn-create" type="submit" class="btn btn-success d-flex align-items-center">
+                Submit
+                <box-icon name='right-arrow-alt' color='white'></box-icon>
+            </button>
         </div>
     </form>
 

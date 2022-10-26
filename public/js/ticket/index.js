@@ -4,11 +4,11 @@ $(document).on('click', '#btn-proceed', function(){
         message: "<h6>This will register your tickets to the roll event. Continue?</h6>",
         buttons: {
             confirm: {
-                label: '<span class="glyphicon glyphicon-ok"></span> Yes',
+                label: 'Yes',
                 className: 'btn-warning'
             },
             cancel: {
-                label: '<span class="glyphicon glyphicon-remove"></span> No',
+                label: 'No',
                 className: 'btn-danger'
             }
         },

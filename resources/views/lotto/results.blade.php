@@ -79,6 +79,9 @@
     </div>
 
     <div class="buttons">
-        <a href="/" class='btn btn-warning'>Back to home</a>
+        <a href="/" class='btn btn-warning d-flex align-items-center'>
+            <box-icon name='home'></box-icon>
+            &nbsp;Back to home
+        </a>
     </div>
 @endsection

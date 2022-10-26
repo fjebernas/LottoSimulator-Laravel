@@ -6,6 +6,7 @@
 
 import './bootstrap';
 import { createApp } from 'vue';
+import 'boxicons';
 
 /**
  * Next, we will create a fresh Vue application instance. You may then begin
