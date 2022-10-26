@@ -49,6 +49,7 @@
 </div>
 
 <div class="buttons">
+    <a href='/menu' class='btn btn-danger'>Go back</a>
     <a href='/tickets/create' class='btn btn-primary'>Add ticket</a>
     @if (count($tickets) > 0)
     <a id="btn-proceed" class='btn btn-warning'>Proceed</a>
