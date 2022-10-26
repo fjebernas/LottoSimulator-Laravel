@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
 @section('customcss')
-    <link rel="stylesheet" href="/css/leaderboards.css">
+    <link rel="stylesheet" href="/css/records/leaderboards.css">
 @endsection
 
 @section('customjs')
-    <script src="/js/leaderboards.js" defer></script>
+    <script src="/js/records/leaderboards.js" defer></script>
 @endsection
 
 @section('content')
@@ -22,25 +22,22 @@
                 </tr>
             </thead>
             <tbody>
-                @if (count($users) > 0)
-                    @foreach ($users as $user)
-                        <tr>
-                            @if ($loop->first)
-                                <td scope='row' class="">♛ {{ $user->name }}</td>
-                            @else
-                                <td scope='row' class="">{{ $user->name }}</td>
-                            @endif
-                            <td scope='row' class="">{{ $user->tickets_created }}</td>
-                            <td scope='row' class="">{{ $user->roll_events_participated }}</td>
-                            <td scope='row' class="text-success">₱{{ $user->money }}</td>
-                        </tr>
-                    @endforeach
-                @else
+                @forelse ($users as $user)
+                    <tr>
+                        @if ($loop->first)
+                            <td scope='row' class="">♛ {{ $user->name }}</td>
+                        @else
+                            <td scope='row' class="">{{ $user->name }}</td>
+                        @endif
+                        <td scope='row' class="">{{ $user->tickets_created }}</td>
+                        <td scope='row' class="">{{ $user->roll_events_participated }}</td>
+                        <td scope='row' class="text-success">₱{{ $user->money }}</td>
+                    </tr>
+                @empty
                     <tr>
                         <td colspan="4">No users</td>
                     <tr>
-                @endif
-                
+                @endforelse
             </tbody>
         </table>
     </div>

@@ -12,11 +12,6 @@ use Illuminate\Support\Facades\Response;
 
 class RollController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     /**
      * Handle the incoming request.
      *

@@ -11,11 +11,6 @@ use Illuminate\Support\Facades\Auth;
 
 class RollEventStarter extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     /**
      * Handle the incoming request.
      *

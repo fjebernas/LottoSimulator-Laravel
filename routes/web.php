@@ -23,13 +23,19 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/tickets', [TicketController::class, 'index']);
-Route::get('/tickets/create', [TicketController::class, 'create']);
-Route::post('/tickets', [TicketController::class, 'store']);
+Route::middleware(['auth'])->group(function(){
+    Route::controller(TicketController::class)->group(function(){
+        Route::get('/tickets', 'index');
+        Route::get('/tickets/create', 'create');
+        Route::post('/tickets', 'store');
+    });
 
-Route::get('/lotto/rolling', RollEventStarter::class);
-Route::post('/lotto/rolling', RollController::class);
-Route::post('/lotto/results', ResultsController::class);
+    Route::get('/lotto/rolling', RollEventStarter::class);
+    Route::post('/lotto/rolling', RollController::class);
+    Route::post('/lotto/results', ResultsController::class);
+});
+
+
 
 Route::get('/records/leaderboards', [RecordsController::class, 'showLeaderboards']);
 
