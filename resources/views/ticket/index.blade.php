@@ -9,6 +9,7 @@
 @endsection
 
 @section('content')
+<h1 class="fw-bold pb-0 mb-0 text-center font-weight-bold">{{ session('lotto_type') }}</h1>
 <h1 class='custom-h1'>Your tickets:</h1>
 
 @if (session('msg') !== null)

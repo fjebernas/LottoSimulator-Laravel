@@ -9,6 +9,7 @@
 @endsection
 
 @section('content')
+    <h1 class="fw-bold pb-0 mb-0 text-center font-weight-bold">{{ session('lotto_type') }}</h1>
     <h1 class='custom-h1'>Lotto results:</h1>
 
     <div class='rolls-container d-flex flex-row container flex-wrap'>

@@ -22,7 +22,7 @@
                 <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
                 <form action="/menu/set" method="GET">
                     @csrf
-                    <input type="hidden" name="lotto_mode" value="vanilla_lotto">
+                    <input type="hidden" name="lotto_mode" value="Lotto 6/42">
                     <button type="submit" class="btn btn-warning align-self-end">Play now</button>
                 </form>
             </div>
@@ -37,7 +37,7 @@
                 <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
                 <form action="/menu/set" method="GET">
                     @csrf
-                    <input type="hidden" name="lotto_mode" value="mega_lotto">
+                    <input type="hidden" name="lotto_mode" value="Mega Lotto 6/45">
                     <button type="submit" class="btn btn-warning align-self-end">Play now</button>
                 </form>
             </div>
@@ -52,7 +52,7 @@
                 <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
                 <form action="/menu/set" method="GET">
                     @csrf
-                    <input type="hidden" name="lotto_mode" value="ultra_lotto">
+                    <input type="hidden" name="lotto_mode" value="Ultra Lotto 6/58">
                     <button type="submit" class="btn btn-warning align-self-end">Play now</button>
                 </form>
             </div>
@@ -67,7 +67,7 @@
                 <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
                 <form action="/menu/set" method="GET">
                     @csrf
-                    <input type="hidden" name="lotto_mode" value="swertres_lotto">
+                    <input type="hidden" name="lotto_mode" value="Swertres Lotto 3/10">
                     <button type="submit" class="btn btn-warning align-self-end">Play now</button>
                 </form>
             </div>

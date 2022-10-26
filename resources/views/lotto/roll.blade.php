@@ -9,6 +9,7 @@
 @endsection
 
 @section('content')
+    <h1 class="fw-bold pb-0 mb-0 text-center font-weight-bold">{{ session('lotto_type') }}</h1>
     <h1 class='custom-h1 pb-0'>It's RNG time.</h1>
 
     <div class="jumbotron bg-gradient text-white rounded" style="background: #553491;">
