@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('roll_events', function (Blueprint $table) {
             $table->id();
+            $table->string('lotto_type');
             $table->integer('rolls_left')->nullable();
             $table->boolean('is_finished')->default(false)->nullable();
             $table->integer('money_awarded')->default(0);

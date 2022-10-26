@@ -63,6 +63,7 @@ class RollController extends Controller
     private function storeRoll($digit, $roll_event_id)
     {
         $roll = new Roll();
+        $roll->lotto_type = session('lotto_type');
         $roll->rolled_digit = $digit;
         $roll->roll_event_id = $roll_event_id;
         $roll->save();

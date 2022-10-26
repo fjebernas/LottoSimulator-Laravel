@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('rolls', function (Blueprint $table) {
             $table->id();
+            $table->string('lotto_type');
             $table->integer('rolled_digit');
             $table->integer('roll_event_id');
             $table->timestamps();
