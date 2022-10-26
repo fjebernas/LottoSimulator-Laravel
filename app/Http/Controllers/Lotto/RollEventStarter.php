@@ -57,6 +57,7 @@ class RollEventStarter extends Controller
     {
         DB::table('tickets')
             ->where('owner', Auth::user()->name)
+            ->where('lotto_type', session('lotto_type'))
             ->where('is_valid', true)
             ->update(['roll_event_id' => $roll_event_id]);
     }
