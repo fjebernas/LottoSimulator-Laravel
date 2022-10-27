@@ -33,7 +33,7 @@
                 Featured
             </div>
             <div class="card-body d-flex flex-column">
-                <h5 class="card-title fs-1">Lotto 6/45</h5>
+                <h5 class="card-title fs-1">Mega Lotto 6/45</h5>
                 <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
                 <form action="/menu/set" method="GET" class="d-flex flex-column">
                     @csrf

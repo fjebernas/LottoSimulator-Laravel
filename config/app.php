@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Lotto Game Simulator'),
+    'name' => env('APP_NAME', 'Lotto Simulator'),
 
     /*
     |--------------------------------------------------------------------------

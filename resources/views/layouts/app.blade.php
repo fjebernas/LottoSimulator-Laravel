@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Lotto Game Simulator') }}</title>
+    <title>{{ config('app.name', 'Lotto Simulator') }}</title>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -32,11 +32,11 @@
     @yield('customjs')
 </head>
 <body>
-    <div id="app">
+    <div id="app" class="d-flex flex-column">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
             <div class="container">
                 <a class="navbar-brand fs-3" href="{{ url('/') }}">
-                    {{ config('app.name', 'Lotto Game Simulator') }}
+                    {{ config('app.name', 'Lotto Simulator') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -95,6 +95,15 @@
                 @yield('content')
             </div>
         </main>
+
+        <footer class="pb-2 mb-0 mt-auto text-center">
+            <hr>
+            <div class="d-flex justify-content-center flex-wrap pt-1">
+                <p class="text-muted p-0 m-0">&copy; 2022 Developed by Francis Bernas.</p>
+                <p class="text-muted p-0 m-0">&nbsp; This is a simulation of "lotto" game. This is made only to practice my webdev skills.</p>
+            </div>
+            <p class="text-muted p-0 mt-2">Lotto 6/42, Mega Lotto 6/45, Ultra Lotto 6/58 & Swertres are registered trademark of PSCO. I do not own them.</p>
+        </footer>
     </div>
 </body>
 </html>
