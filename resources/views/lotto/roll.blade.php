@@ -25,7 +25,7 @@
             {{-- form to be used only after rolling is done --}}
             <form action='/lotto/results' method='post'>
                 @csrf
-                {{-- button used by ajax and to be replace by button that uses the form tag --}}
+                {{-- button used by ajax and to be replaced by button that uses the form tag --}}
                 <div id="btn-roll-container">
                     <input id="roll_event_id" type="hidden" name="roll_event_id" value="{{ $roll_event_id }}">
                     <button id='btn-roll' class='btn bg-primary text-white btn-lg' type='button'>Roll!</button>

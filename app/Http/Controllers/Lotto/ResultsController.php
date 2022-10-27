@@ -79,7 +79,7 @@ class ResultsController extends Controller
         foreach ($rolled_digits as $rolled_digit) {
             if (in_array($rolled_digit, Ticket::where('id', $ticket_id)
                                             ->value('digits'))) {
-                $counter = $counter + 1;
+                $counter += 1;
             }
         }
         return $counter;
@@ -112,15 +112,15 @@ class ResultsController extends Controller
         $moneyToAdd = 0;
         foreach ($tickets as $ticket) {
             if ($ticket->matched_digits == 6) {
-                $moneyToAdd = $moneyToAdd + 100000000;
+                $moneyToAdd += 100000000;
             } else if ($ticket->matched_digits == 5) {
-                $moneyToAdd = $moneyToAdd + 100000;
+                $moneyToAdd += 100000;
             } else if ($ticket->matched_digits == 4) {
-                $moneyToAdd = $moneyToAdd + 1000;
+                $moneyToAdd += 1000;
             } else if ($ticket->matched_digits == 3) {
-                $moneyToAdd = $moneyToAdd + 500;
+                $moneyToAdd += 500;
             } else if ($ticket->matched_digits == 2) {
-                $moneyToAdd = $moneyToAdd + 100;
+                $moneyToAdd += 100;
             }
         }
         return $moneyToAdd;

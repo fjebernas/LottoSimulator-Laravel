@@ -50,7 +50,7 @@ $(document).ready(function($){
                 $('#rolls-left-container').text('Rolls left: ' + data['rolls_left']);
 
                 // change jumbotron button when rolls left is 0
-                if (data['rolls_left'] == 0) {
+                if (data['rolls_left'] <= 0) {
                     $('#btn-roll-container').replaceWith(seeResultsBtn);
                 }
                 

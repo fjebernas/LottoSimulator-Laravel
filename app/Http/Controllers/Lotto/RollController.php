@@ -23,10 +23,11 @@ class RollController extends Controller
         // get the current roll event id through POST
         $roll_event_id = $request->roll_event_id;
 
-        $unique_random_digit = $this->getUniqueRandomDigit($roll_event_id);
-        $this->storeRoll($unique_random_digit, $roll_event_id);
-
-        $this->decrementRollsLeft($roll_event_id);
+        if (RollEvent::where('id', $roll_event_id)->value('rolls_left') > 0) {
+            $unique_random_digit = $this->getUniqueRandomDigit($roll_event_id);
+            $this->storeRoll($unique_random_digit, $roll_event_id);
+            $this->decrementRollsLeft($roll_event_id);
+        }
 
         return Response::json(array(
             'rolls_left' =>  RollEvent::where('id', $roll_event_id)
