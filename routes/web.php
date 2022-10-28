@@ -8,6 +8,7 @@ use App\Http\Controllers\Lotto\RollController;
 use App\Http\Controllers\Lotto\ResultsController;
 use App\Http\Controllers\RecordsController;
 use App\Http\Controllers\MenuController;
+use App\Http\Middleware\EnsureLottoTypeIsDefined;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,10 +31,12 @@ Route::middleware(['auth'])->group(function(){
         Route::get('/menu/set', 'setSessionDataAndRedirect');
     });
 
-    Route::controller(TicketController::class)->group(function(){
-        Route::get('/tickets', 'index');
-        Route::get('/tickets/create', 'create');
-        Route::post('/tickets', 'store');
+    Route::middleware(['ensureLottoTypeIsDefined'])->group(function(){
+        Route::controller(TicketController::class)->group(function(){
+            Route::get('/tickets', 'index');
+            Route::get('/tickets/create', 'create');
+            Route::post('/tickets', 'store');
+        });
     });
 
     Route::get('/lotto/rolling', RollEventStarter::class);
