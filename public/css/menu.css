@@ -1,3 +1,4 @@
 .cards-container {
-    max-width: 42rem;
+    width: 50rem;
+    max-width: 100%;
 }

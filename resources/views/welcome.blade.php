@@ -5,7 +5,7 @@
 @endsection
 
 @section('customjs')
-    <script src="/js/welcome.js" defer></script>
+    <script src="/js/welcome.js" type="module"></script>
 @endsection
 
 @section('content')

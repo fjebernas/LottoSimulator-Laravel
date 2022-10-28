@@ -5,7 +5,7 @@
 @endsection
 
 @section('customjs')
-    <script src="/js/lotto/roll.js" type="module" defer></script>
+    <script src="/js/lotto/roll.js" type="module"></script>
 @endsection
 
 @section('content')
