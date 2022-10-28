@@ -12,7 +12,7 @@
     <h1 class="fw-bold pb-0 mb-0 text-center font-weight-bold">{{ session('lotto_type') }}</h1>
     <h1 class='custom-h1'>Lotto results:</h1>
 
-    <div class='rolls-container d-flex flex-row container flex-wrap'>
+    <div class='rolls-container d-flex flex-row container flex-wrap  animate__animated animate__bounceInLeft'>
         @foreach ($rolls as $roll)
             <div class='text-center card text-white bg-gradient mb-3' style='background: #553491; max-width: 10rem; margin-right: 10px;'>
                 <div class='card-header'>Rolled digit</div>

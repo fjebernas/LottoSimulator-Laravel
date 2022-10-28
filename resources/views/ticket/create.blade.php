@@ -11,7 +11,7 @@
 @section('content')
     <h1 class='custom-h1'>Create new ticket for {{ session('lotto_type') }}:</h1>
 
-    <div class="custom-container d-flex justify-content-between align-items-center mb-1">
+    <div class="custom-container d-flex justify-content-between align-items-center mb-1 animate__animated animate__flipInX">
         <h5 class="text-muted m-0">Select {{ session('combination_count') }} digits:</h5>
         <div class="form-check">
             <input class="form-check-input" type="checkbox" value="" id="chkbx-random-digits">
@@ -24,7 +24,7 @@
 
     <form action="/tickets" method="POST">
         @csrf
-        <fieldset class="d-flex align-content-start flex-wrap d-flex">
+        <fieldset class="d-flex align-content-start flex-wrap d-flex animate__animated animate__flipInX">
             @for ($i = session('digits_range')['min']; $i <= session('digits_range')['max']; $i++)
             <div class="form-check form-check-digits form-check-inline position-relative">
                 <label class="form-check-label create-ticket position-relative" for="{{ $i }}">
@@ -34,7 +34,7 @@
         @endfor
         </fieldset>
 
-        <div class="buttons py-3">
+        <div class="buttons py-3 animate__animated animate__flipInX">
             <a href="/tickets" class="btn btn-danger d-flex align-items-center">
                 <box-icon name='arrow-back' color='white'></box-icon>
                 Go back

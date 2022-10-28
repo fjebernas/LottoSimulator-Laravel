@@ -14,7 +14,7 @@
 
     <div class="d-flex flex-column row gx-0 gy-2 cards-container align-self-center">
         @forelse ($lotto_types as $lotto_type)
-            <div class="card text-white" style="background: {{ $lotto_type->color_theme }};">
+            <div class="card text-white animate__animated animate__fadeInLeft animate__faster" style="background: {{ $lotto_type->color_theme }};">
                 <div class="card-header">
                     Featured
                 </div>
@@ -24,7 +24,7 @@
                     <form action="/menu/set" method="GET" class="d-flex flex-column">
                         @csrf
                         <input type="hidden" name="lotto_type_id" value="{{ $lotto_type->id }}">
-                        <button type="submit" class="btn btn-warning align-self-end px-4">Play now</button>
+                        <button type="submit" class="btn btn-warning align-self-end px-4 animate__animated animate__swing">Play now</button>
                     </form>
                 </div>
             </div>
