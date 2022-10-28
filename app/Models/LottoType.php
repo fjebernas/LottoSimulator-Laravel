@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Ticket extends Model
+class LottoType extends Model
 {
     use HasFactory;
 
     protected $casts = [
-        'digits' => 'array',
+        'digits_range' => 'array',
     ];
 }
