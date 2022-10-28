@@ -50,29 +50,26 @@
                 </tr>
             </thead>
             <tbody>
-                @if (count($tickets) > 0)
-                    @foreach ($tickets as $ticket)
-                        <tr>
-                            <th scope='row'>{{ $ticket->id }}</td>
-                            @foreach ($ticket->digits as $digit)
-                                @isset($rolls)
-                                    @if (in_array($digit, $rolls))
-                                        <td class="bg-success fw-bold text-warning">{{ $digit }}</td>
-                                    @else
-                                        <td>{{ $digit }}</td>
-                                    @endif
+                @forelse ($tickets as $ticket)
+                    <tr>
+                        <th scope='row'>{{ $ticket->id }}</td>
+                        @foreach ($ticket->digits as $digit)
+                            @isset($rolls)
+                                @if (in_array($digit, $rolls))
+                                    <td class="bg-success fw-bold text-warning">{{ $digit }}</td>
                                 @else
-                                    <td class={{ $digit }}>{{ $digit }}</td>
-                                @endisset
-                            @endforeach
-                        </tr>
-                    @endforeach
-                @else
+                                    <td>{{ $digit }}</td>
+                                @endif
+                            @else
+                                <td class={{ $digit }}>{{ $digit }}</td>
+                            @endisset
+                        @endforeach
+                    </tr>
+                @empty
                     <tr>
                         <td colspan="{{ 2 + session('combination_count') }}">No tickets</td>
                     <tr>
-                @endif
-                
+                @endforelse
             </tbody>
         </table>
     </div>

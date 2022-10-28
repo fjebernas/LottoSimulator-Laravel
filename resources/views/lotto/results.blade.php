@@ -13,7 +13,7 @@
     <h1 class='custom-h1'>Lotto results:</h1>
 
     <div class='rolls-container d-flex flex-row container flex-wrap  animate__animated animate__bounceInLeft'>
-        @foreach ($rolls as $roll)
+        @forelse ($rolls as $roll)
             <div class='text-center card text-white bg-gradient mb-3' style='background: #553491; max-width: 10rem; margin-right: 10px;'>
                 <div class='card-header'>Rolled digit</div>
                 <div class='card-body'>
@@ -24,7 +24,10 @@
                     </h1>
                 </div>
             </div>
-        @endforeach
+        @empty
+            <h2 class="text-muted text-center py-2">No rolls found.</h2>
+        @endforelse
+        
     </div>
 
     @foreach ($tickets as $ticket)
@@ -55,25 +58,23 @@
                 </tr>
             </thead>
             <tbody>
-                @if (count($tickets) > 0)
-                    @foreach ($tickets as $ticket)
-                        <tr>
-                            <th scope='row'>{{ $ticket->id }}</td>
-                            @foreach ($ticket->digits as $digit)
-                                @if (in_array($digit, $rolls))
-                                    <td class="bg-success fw-bold text-warning">{{ $digit }}</td>
-                                @else
-                                    <td>{{ $digit }}</td>
-                                @endif
-                            @endforeach
-                            <th scope='row'>{{ $ticket->matched_digits }}</td>
-                        </tr>
-                    @endforeach
-                @else
+                @forelse ($tickets as $ticket)
+                    <tr>
+                        <th scope='row'>{{ $ticket->id }}</td>
+                        @foreach ($ticket->digits as $digit)
+                            @if (in_array($digit, $rolls))
+                                <td class="bg-success fw-bold text-warning">{{ $digit }}</td>
+                            @else
+                                <td>{{ $digit }}</td>
+                            @endif
+                        @endforeach
+                        <th scope='row'>{{ $ticket->matched_digits }}</td>
+                    </tr>
+                @empty
                     <tr>
                         <td colspan="{{ 2 + session('combination_count') }}">No tickets</td>
                     <tr>
-                @endif
+                @endforelse
             </tbody>
         </table>
     </div>

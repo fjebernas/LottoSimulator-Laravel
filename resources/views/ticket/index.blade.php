@@ -24,22 +24,19 @@
             </tr>
         </thead>
         <tbody>
-            @if (count($tickets) > 0)
-                @foreach ($tickets as $ticket)
-                    <tr>
-                        <th scope='row' class="">{{ $ticket->id }}</td>
-                        <td>{{ $ticket->created_at }}</td>
-                        @foreach ($ticket->digits as $digit)
-                            <td>{{ $digit }}</td>
-                        @endforeach
-                    </tr>
-                @endforeach
-            @else
+            @forelse ($tickets as $ticket)
+                <tr>
+                    <th scope='row' class="">{{ $ticket->id }}</td>
+                    <td>{{ $ticket->created_at }}</td>
+                    @foreach ($ticket->digits as $digit)
+                        <td>{{ $digit }}</td>
+                    @endforeach
+                </tr>
+            @empty
                 <tr>
                     <td colspan="{{ 2 + session('combination_count') }}">No tickets</td>
                 <tr>
-            @endif
-            
+            @endforelse
         </tbody>
     </table>
 </div>
