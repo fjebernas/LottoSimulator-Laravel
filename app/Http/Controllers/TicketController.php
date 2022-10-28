@@ -53,7 +53,11 @@ class TicketController extends Controller
         $this->incrementTicketsCreated();
 
         return redirect('/tickets')
-            ->with('msg', 'Ticket successfully created.');
+            ->with('notification', [
+                'message' => 'Ticket successfully created.',
+                'type' => 'success'
+            ]
+        );
     }
 
     

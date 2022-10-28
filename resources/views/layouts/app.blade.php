@@ -21,10 +21,24 @@
     {{-- custom CSS per page --}}
     @yield('customcss')
 
+    {{-- custom js for all pages --}}
+    <script src="/js/common.js" type="module"></script>
     {{-- custom js --}}
     @yield('customjs')
 </head>
 <body>
+    <span class="d-none" id="toast-data-holder" 
+        data-msg="
+            @if (session('notification') !== null)
+                {{ session('notification')['message'] }}
+            @endif
+        "
+        data-type="
+            @if (session('notification') !== null)
+                {{ session('notification')['type'] }}
+            @endif
+        ">
+    </span>
     <div id="app" class="d-flex flex-column">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
             <div class="container">

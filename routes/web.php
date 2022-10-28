@@ -21,42 +21,42 @@ use App\Http\Middleware\EnsureLottoTypeIsDefined;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::middleware(['forgetLottoSession'])->group(function(){
+    Auth::routes();
 
-Route::middleware(['auth'])->group(function(){
-    Route::controller(MenuController::class)->group(function(){
-        Route::get('/menu', 'menu');
-        Route::get('/menu/set', 'setSessionDataAndRedirect');
+    Route::get('/', function () {
+        return view('welcome');
     });
 
-    Route::middleware(['ensureLottoTypeIsDefined'])->group(function(){
-        Route::controller(TicketController::class)->group(function(){
-            Route::get('/tickets', 'index');
-            Route::get('/tickets/create', 'create');
-            Route::post('/tickets', 'store');
+    Route::get('/home', [MenuController::class, 'menu']);
+
+    Route::controller(RecordsController::class)->group(function(){
+        Route::get('/records/leaderboards', 'showLeaderboards');
+    });
+    
+    Route::middleware(['auth'])->group(function(){
+        Route::controller(MenuController::class)->group(function(){
+            Route::get('/menu', 'menu');
+            Route::get('/menu/set', 'setSessionDataAndRedirect');
+        });
+    
+        Route::withoutMiddleware(['forgetLottoSession'])->group(function(){
+            Route::middleware(['ensureLottoSessionIsSet'])->group(function(){
+                Route::controller(TicketController::class)->group(function(){
+                    Route::get('/tickets', 'index');
+                    Route::get('/tickets/create', 'create');
+                    Route::post('/tickets', 'store');
+                });
+            });
+        
+            Route::get('/lotto/rolling', RollEventStarter::class);
+            Route::post('/lotto/rolling', RollController::class);
+            Route::post('/lotto/results', ResultsController::class);
         });
     });
-
-    Route::get('/lotto/rolling', RollEventStarter::class);
-    Route::post('/lotto/rolling', RollController::class);
-    Route::post('/lotto/results', ResultsController::class);
+    
+    // protect this invalid routes
+    Route::get('/lotto/results', function(){
+        return back();
+    });
 });
-
-
-
-Route::get('/records/leaderboards', [RecordsController::class, 'showLeaderboards']);
-
-
-// protect this invalid routes
-Route::get('/lotto/results', function(){
-    return back();
-});
-
-
-Auth::routes();
-
-//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-// temporary home
-Route::get('/home', [MenuController::class, 'menu']);

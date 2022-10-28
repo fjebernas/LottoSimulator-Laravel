@@ -12,10 +12,6 @@
 <h1 class="fw-bold pb-0 mb-0 text-center font-weight-bold">{{ session('lotto_type') }}</h1>
 <h1 class='custom-h1'>Your tickets:</h1>
 
-@if (session('msg') !== null)
-    <div class='alert alert-success'>{{ session('msg') }}</div>
-@endif
-
 <div class="table-responsive">
     <table class="center-text table table-hover table-bordered text-center">
         <thead class="text-white bg-secondary">

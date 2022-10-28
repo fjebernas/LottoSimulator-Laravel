@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
-class EnsureLottoTypeIsDefined
+class ForgetLottoSession
 {
     /**
      * Handle an incoming request.
@@ -17,15 +17,10 @@ class EnsureLottoTypeIsDefined
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Session::has('lotto_type')) {
-            return $next($request);
-        } else {
-            return redirect('/menu')
-                ->with('notification', [
-                    'message' => 'Select Lotto type first.',
-                    'type' => 'error'
-                ]
-            );
+        if (Session::has(['lotto_type', 'combination_count', 'digits_range'])) {
+            Session::forget(['lotto_type', 'combination_count', 'digits_range']);
         }
+
+        return $next($request);
     }
 }

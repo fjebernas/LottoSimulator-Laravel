@@ -63,6 +63,7 @@ class Kernel extends HttpKernel
         'signed' => \App\Http\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
-        'ensureLottoTypeIsDefined' => \App\Http\Middleware\EnsureLottoTypeIsDefined::class,
+        'ensureLottoSessionIsSet' => \App\Http\Middleware\EnsureLottoTypeIsDefined::class,
+        'forgetLottoSession' =>\App\Http\Middleware\ForgetLottoSession::class,
     ];
 }

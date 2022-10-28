@@ -111,7 +111,7 @@ class ResultsController extends Controller
                         ->get();
         $moneyToAdd = 0;
         foreach ($tickets as $ticket) {
-            if ($ticket->matched_digits == 6) {
+            if ($ticket->matched_digits >= 6) {
                 $moneyToAdd += 100000000;
             } else if ($ticket->matched_digits == 5) {
                 $moneyToAdd += 100000;

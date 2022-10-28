@@ -28,7 +28,7 @@
     </div>
 
     @foreach ($tickets as $ticket)
-        @if ($ticket->matched_digits == 6)
+        @if ($ticket->matched_digits >= 6)
             <div class='alert alert-success'>Congratulations! You won 100,000,000 pesos!</div>
         @elseif ($ticket->matched_digits == 5)
             <div class='alert alert-success'>Congratulations! You won 100,000 pesos!</div>
