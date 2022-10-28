@@ -1,13 +1,11 @@
 $(document).ready(function($){
     
     // swal notification for starting the roll event
-    Swal.fire({
-        position: 'top-end',
-        icon: 'info',
-        title: $('#notification-msg').attr('data-msg'),
-        showConfirmButton: false,
-        timer: 2500
-    })
+    Swal.fire(
+        $('#notification-msg').attr('data-msg'),
+        'Good luck!',
+        'info'
+    )
     
     var roll_event_id = $('#roll_event_id').attr('value');
     var seeResultsBtn = "<input type='hidden' name='roll_event_id' value='" + roll_event_id + "'>\
