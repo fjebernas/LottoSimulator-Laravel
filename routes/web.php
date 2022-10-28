@@ -9,6 +9,7 @@ use App\Http\Controllers\Lotto\ResultsController;
 use App\Http\Controllers\RecordsController;
 use App\Http\Controllers\MenuController;
 use App\Http\Middleware\EnsureLottoTypeIsDefined;
+use App\Http\Controllers\LottoTypeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,6 +36,11 @@ Route::middleware(['forgetLottoSession'])->group(function(){
     });
     
     Route::middleware(['auth'])->group(function(){
+        Route::controller(LottoTypeController::class)->group(function(){
+            Route::get('/lottotype/create', 'create');
+            Route::post('/lottotype', 'store');
+        });
+
         Route::controller(MenuController::class)->group(function(){
             Route::get('/menu', 'menu');
             Route::get('/menu/set', 'setSessionDataAndRedirect');

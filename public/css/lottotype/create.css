@@ -1,0 +1,7 @@
+.form-container {
+    max-width: 44rem;
+}
+
+.col.input-group.mb-3 {
+    max-width: 10rem;
+}
