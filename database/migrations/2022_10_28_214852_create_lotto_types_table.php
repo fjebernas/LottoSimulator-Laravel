@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->integer('combination_count');
             $table->json('digits_range');
+            $table->string('color_theme');
             $table->timestamps();
         });
     }

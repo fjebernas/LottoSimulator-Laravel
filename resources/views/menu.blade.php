@@ -14,7 +14,7 @@
 
     <div class="d-flex flex-column row gx-0 gy-2 cards-container align-self-center">
         @forelse ($lotto_types as $lotto_type)
-            <div class="card text-white" style="background: #6610f2;">
+            <div class="card text-white" style="background: {{ $lotto_type->color_theme }};">
                 <div class="card-header">
                     Featured
                 </div>
