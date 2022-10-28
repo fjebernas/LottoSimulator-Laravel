@@ -31,7 +31,7 @@
                         @endif
                         <td scope='row' class="">{{ $user->tickets_created }}</td>
                         <td scope='row' class="">{{ $user->roll_events_participated }}</td>
-                        <td scope='row' class="text-success">₱{{ $user->money }}</td>
+                        <td scope='row' class="text-success">₱{{ number_format($user->money)  }}</td>
                     </tr>
                 @empty
                     <tr>

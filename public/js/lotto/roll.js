@@ -1,25 +1,13 @@
 $(document).ready(function($){
     
-    toastr.options = {
-        "closeButton": false,
-        "debug": false,
-        "newestOnTop": true,
-        "progressBar": true,
-        "positionClass": "toast-top-right",
-        "preventDuplicates": false,
-        "onclick": null,
-        "showDuration": "300",
-        "hideDuration": "1000",
-        "timeOut": "5000",
-        "extendedTimeOut": "1000",
-        "showEasing": "swing",
-        "hideEasing": "linear",
-        "showMethod": "fadeIn",
-        "hideMethod": "fadeOut"
-    }
-    
-    // toast notification for starting the roll event
-    toastr.info($('#notification-msg').attr('data-msg'));
+    // swal notification for starting the roll event
+    Swal.fire({
+        position: 'top-end',
+        icon: 'info',
+        title: $('#notification-msg').attr('data-msg'),
+        showConfirmButton: false,
+        timer: 2500
+    })
     
     var roll_event_id = $('#roll_event_id').attr('value');
     var seeResultsBtn = "<input type='hidden' name='roll_event_id' value='" + roll_event_id + "'>\
@@ -57,8 +45,11 @@ $(document).ready(function($){
                 // highlight the td of the matched digit in table
                 $('.' + data['rolled_digit']).addClass('bg-success fw-bold text-warning');
 
-                // toast notification msg
-                toastr.success(data['msg']);
+                // swal notification msg
+                Swal.fire(
+                    String('Rolled digit: ' + data['rolled_digit']),
+                    data['msg'],
+                )
             },
             error: function (data) {
                 console.log(data);

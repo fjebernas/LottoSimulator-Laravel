@@ -33,7 +33,7 @@ class RollController extends Controller
             'rolls_left' =>  RollEvent::where('id', $roll_event_id)
                                     ->value('rolls_left'),
             'rolled_digit' => $unique_random_digit,
-            'msg' => 'RNG success. Rolled digit: ' . $unique_random_digit
+            'msg' => 'RNG success.'
         ));
     }
 

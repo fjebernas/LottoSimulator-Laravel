@@ -15,19 +15,12 @@
 
     {{-- CSS bootstrap --}}
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
-    {{-- toastr css --}}
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.css" rel="stylesheet"/>
+    
     {{-- custom css for all pages --}}
     <link rel="stylesheet" href="/css/common.css">
     {{-- custom CSS per page --}}
     @yield('customcss')
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <!-- bootbox library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.5.2/bootbox.min.js"></script>
-    {{-- toastr js --}}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script>
     {{-- custom js --}}
     @yield('customjs')
 </head>
