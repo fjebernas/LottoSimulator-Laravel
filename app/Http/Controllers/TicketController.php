@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Ticket;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Session;
+use App\Models\LottoType;
 
 class TicketController extends Controller
 {
@@ -20,9 +20,9 @@ class TicketController extends Controller
 
         return view('ticket.index')
                 ->with('tickets', Ticket::where('owner', Auth::user()->name)
-                ->where('lotto_type', session('lotto_type'))
-                ->where('is_valid', true)
-                ->get());
+                    ->where('lotto_type', session('lotto_type'))
+                    ->where('is_valid', true)
+                    ->get());
     }
 
     /** show the form for creating a ticket
