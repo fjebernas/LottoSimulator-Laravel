@@ -12,6 +12,13 @@ class LottoTypeController extends Controller
     }
 
     public function store(Request $request) {
+        $validated = $request->validate([
+            'name' => 'required|max:255',
+            'combination_count' => 'required',
+            'digits_range.*' => 'required|distinct',
+            'color_theme' => 'required|max:255'
+        ]);
+
         $lotto_type = new LottoType();
         $lotto_type->name = $request->name;
         $lotto_type->combination_count = $request->combination_count;

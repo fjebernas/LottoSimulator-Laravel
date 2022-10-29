@@ -16,30 +16,42 @@
             @csrf
             <div class="form-group pb-3">
                 <label for="lotto-name">Name of your custom Lotto game:</label>
-                <input name="name" type="text" class="form-control" id="lotto-name" placeholder="Custom Lotto 5/20">
+                <input name="name" type="text" class="form-control @error('name') is-invalid @enderror" id="lotto-name" placeholder="ex: Custom Lotto 5/20">
             </div>
+            @error('name')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
         
             <div class="form-group pb-3">
                 <label for="lotto-combination-count">Combination count:</label>
-                <input name="combination_count" type="number" class="form-control" id="lotto-combination-count" placeholder="5">
+                <input name="combination_count" type="number" class="form-control @error('combination_count') is-invalid @enderror" id="lotto-combination-count" placeholder="ex: 5">
             </div>
+            @error('combination_count')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
         
             <h6 class="pb-2 m-0">Digits range:</h6>
             <fieldset class="row gx-2">
                 <div class="col input-group mb-3">
                     <span class="input-group-text" id="basic-addon1">min</span>
-                    <input name="digits_range[]" type="number" class="form-control text-center" placeholder="1" aria-label="Username" aria-describedby="basic-addon1">
+                    <input name="digits_range[]" type="number" class="form-control text-center @error('digits_range.*') is-invalid @enderror" placeholder="ex: 1" aria-label="Username" aria-describedby="basic-addon1">
                 </div>
                 <div class="col input-group mb-3">
                     <span class="input-group-text" id="basic-addon1">max</span>
-                    <input name="digits_range[]" type="number" class="form-control text-center" placeholder="20" aria-label="Username" aria-describedby="basic-addon1">
+                    <input name="digits_range[]" type="number" class="form-control text-center @error('digits_range.*') is-invalid @enderror" placeholder="ex: 20" aria-label="Username" aria-describedby="basic-addon1">
                 </div>
             </fieldset>
+            @error('digits_range.*')
+                <div class="alert alert-danger">{{ str_replace (array('_', '.'), ' ' , $message) }}</div>
+            @enderror
         
-            <div class="form-group p-0 m-0">
+            <div class="form-group pb-3 m-0">
                 <label for="lotto-color-theme">Color theme:</label>
-                <input name="color_theme" type="text" class="form-control" id="lotto-color-theme" placeholder="blue">
+                <input name="color_theme" type="text" class="form-control @error('color_theme') is-invalid @enderror" id="lotto-color-theme" placeholder="ex: blue">
             </div>
+            @error('color_theme')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
 
             <div class="buttons py-3">
                 <a href="/" class="btn btn-danger d-flex align-items-center">
