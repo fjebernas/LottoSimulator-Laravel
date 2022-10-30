@@ -8,8 +8,8 @@ $(document).ready(function($){
     )
     
     var roll_event_id = $('#roll_event_id').attr('value');
-    var seeResultsBtn = "<input type='hidden' name='roll_event_id' value='" + roll_event_id + "'>\
-                        <button class='btn btn-warning btn-lg' type='submit'>See results</button>";
+    var seeResultsBtn = `<input type='hidden' name='roll_event_id' value='${roll_event_id}'>
+                        <button class='btn btn-warning btn-lg' type='submit'>See results</button>`;
 
     $("#btn-roll").click(function (e) {
         $.ajaxSetup({

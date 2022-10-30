@@ -34,11 +34,11 @@
             <fieldset class="row gx-2">
                 <div class="col input-group mb-3">
                     <span class="input-group-text" id="basic-addon1">min</span>
-                    <input name="digits_range[]" type="number" class="form-control text-center @error('digits_range.*') is-invalid @enderror" placeholder="ex: 1" aria-label="Username" aria-describedby="basic-addon1">
+                    <input name="digits_range[]" type="number" min="0" class="form-control text-center @error('digits_range.*') is-invalid @enderror" placeholder="ex: 1" aria-label="Username" aria-describedby="basic-addon1">
                 </div>
                 <div class="col input-group mb-3">
                     <span class="input-group-text" id="basic-addon1">max</span>
-                    <input name="digits_range[]" type="number" class="form-control text-center @error('digits_range.*') is-invalid @enderror" placeholder="ex: 20" aria-label="Username" aria-describedby="basic-addon1">
+                    <input name="digits_range[]" type="number" min="0" class="form-control text-center @error('digits_range.*') is-invalid @enderror" placeholder="ex: 20" aria-label="Username" aria-describedby="basic-addon1">
                 </div>
             </fieldset>
             @error('digits_range.*')
