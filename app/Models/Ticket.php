@@ -12,4 +12,10 @@ class Ticket extends Model
     protected $casts = [
         'digits' => 'array',
     ];
+
+    protected $fillable = [
+        'lotto_type',
+        'digits',
+        'owner'
+    ];
 }

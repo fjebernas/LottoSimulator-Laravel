@@ -29,12 +29,15 @@ class RollEventStarter extends Controller
         }
         
         // create new roll event, set how many rolls and save to database
-        $roll_event = new RollEvent();
-        $roll_event->lotto_type = session('lotto_type');
-        $roll_event->rolls_left = session('combination_count');
-        $roll_event->save();
+        $roll_event = RollEvent::create([
+            'lotto_type' => session('lotto_type'),
+            'rolls_left' => session('combination_count'),
+        ]);
 
+        // --
         $this->registerValidTickets($roll_event->id);
+
+        // increment user's roll events participated
         $this->incrementRollEventsParticipated();
 
         return view('lotto.roll')

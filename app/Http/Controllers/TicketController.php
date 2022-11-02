@@ -42,13 +42,13 @@ class TicketController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request) {
-        $ticket = new Ticket();
-
-        $ticket->owner = Auth::user()->name;
-        $ticket->lotto_type = session('lotto_type');
-        $ticket->digits = $request->digits;
-        $ticket->save();
+    public function store(Request $request) 
+    {
+        Ticket::create([
+            'lotto_type' => session('lotto_type'),
+            'digits' => $request->digits,
+            'owner' => Auth::user()->name,
+        ]);
 
         $this->incrementTicketsCreated();
 

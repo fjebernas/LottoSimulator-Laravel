@@ -9,6 +9,9 @@
 
     <title>{{ config('app.name', 'Lotto Simulator') }}</title>
 
+    {{-- Icon --}}
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
+
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">

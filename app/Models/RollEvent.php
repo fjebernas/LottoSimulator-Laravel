@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class RollEvent extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'lotto_type',
+        'rolls_left',
+    ];
 }
