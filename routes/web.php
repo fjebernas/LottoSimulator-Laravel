@@ -29,8 +29,6 @@ Route::middleware(['forgetLottoSession'])->group(function(){
         return view('welcome');
     });
 
-    Route::get('/home', [MenuController::class, 'menu']);
-
     Route::controller(RecordsController::class)->group(function(){
         Route::get('/records/leaderboards', 'showLeaderboards');
     });
