@@ -48,6 +48,7 @@ class TicketController extends Controller
             'lotto_type' => session('lotto_type'),
             'digits' => $request->digits,
             'owner' => Auth::user()->name,
+            'user_id' => Auth::user()->id,
         ]);
 
         $this->incrementTicketsCreated();

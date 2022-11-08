@@ -17,7 +17,10 @@ return new class extends Migration
             $table->id();
             $table->string('lotto_type');
             $table->integer('rolled_digit');
-            $table->integer('roll_event_id');
+            $table->foreignId('roll_event_id')
+                ->constrained()
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
             $table->timestamps();
         });
     }

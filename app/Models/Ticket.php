@@ -16,6 +16,7 @@ class Ticket extends Model
     protected $fillable = [
         'lotto_type',
         'digits',
-        'owner'
+        'owner',
+        'user_id',
     ];
 }

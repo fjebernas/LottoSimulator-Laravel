@@ -21,6 +21,10 @@ return new class extends Migration
             $table->integer('matched_digits')->nullable();
             $table->integer('roll_event_id')->nullable();
             $table->string('owner');
+            $table->foreignId('user_id')
+                ->constrained()
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
             $table->timestamps();
         });
     }
