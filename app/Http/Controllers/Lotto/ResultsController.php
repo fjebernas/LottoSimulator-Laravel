@@ -30,10 +30,9 @@ class ResultsController extends Controller
             ->with('rolls', Roll::where('roll_event_id', $roll_event_id)
                                 ->pluck('rolled_digit')
                                 ->toArray())
-            ->with('tickets', Ticket::where('owner', Auth::user()->name)
-                                    ->where('lotto_type', session('lotto_type'))
-                                    ->where('roll_event_id', $roll_event_id)
-                                    ->get());
+            ->with('tickets', Auth::user()->tickets
+                                        ->where('lotto_type', session('lotto_type'))
+                                        ->where('roll_event_id', $roll_event_id));
     }
 
     /**
@@ -44,8 +43,14 @@ class ResultsController extends Controller
      */
     private function setTicketsMatchedDigits($roll_event_id)
     {
+        // $tickets = Auth::user()->tickets->where('roll_event_id', $roll_event_id);
+
+        // foreach ($tickets as $ticket) {
+        //     $this->setMatchedDigits($roll_event_id, $ticket->id);
+        // }
+
         $tickets = Ticket::where('roll_event_id', $roll_event_id)
-                        ->where('owner', Auth::user()->name)
+                        ->where('user_id', Auth::user()->id)
                         ->get();
         foreach ($tickets as $ticket) {
             $this->setMatchedDigits($roll_event_id, $ticket->id);
@@ -55,11 +60,16 @@ class ResultsController extends Controller
     /**
      * 
      *
-     * @param int $roll_event_id @param int $ticket_id
+     * @param int $roll_event_id 
+     * @param int $ticket_id
      * @return void
      */
     private function setMatchedDigits($roll_event_id, $ticket_id)
     {
+        // $ticket->update([
+        //     'matched_digits' => $this->getMatchedDigits($roll_event_id, $ticket),
+        // ]);
+
         DB::table('tickets')
             ->where('id', $ticket_id)
             ->update(['matched_digits' => $this->getMatchedDigits($roll_event_id, $ticket_id)]);
@@ -73,6 +83,16 @@ class ResultsController extends Controller
      */
     private function getMatchedDigits($roll_event_id, $ticket_id)
     {
+        // $counter = 0;
+        // $rolled_digits = Roll::where('roll_event_id', $roll_event_id)
+        //                     ->pluck('rolled_digit');
+        // foreach ($rolled_digits as $rolled_digit) {
+        //     if (in_array($rolled_digit, $ticket->value('digits'))) {
+        //         $counter += 1;
+        //     }
+        // }
+        // return $counter;
+
         $counter = 0;
         $rolled_digits = Roll::where('roll_event_id', $roll_event_id)
                             ->pluck('rolled_digit');
@@ -106,9 +126,7 @@ class ResultsController extends Controller
      */
     private function calculateMoneyToAdd($roll_event_id)
     {
-        $tickets = Ticket::where('roll_event_id', $roll_event_id)
-                        ->where('owner', Auth::user()->name)
-                        ->get();
+        $tickets = Auth::user()->tickets->where('roll_event_id', $roll_event_id);
         $moneyToAdd = 0;
         foreach ($tickets as $ticket) {
             if ($ticket->matched_digits >= 6) {
@@ -134,10 +152,9 @@ class ResultsController extends Controller
      */
     private function invalidateTickets($roll_event_id)
     {
-        DB::table('tickets')
-            ->where('owner', Auth::user()->name)
-            ->where('roll_event_id', $roll_event_id)
-            ->update(['is_valid' => false]);
+        Auth::user()->tickets()
+                    ->where('roll_event_id', $roll_event_id)
+                    ->update(['is_valid' => false]);
     }
 
     /**

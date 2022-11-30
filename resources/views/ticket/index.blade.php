@@ -13,21 +13,19 @@
 <h1 class='custom-h1'>Your tickets:</h1>
 
 <div class="table-responsive">
-    <table class="center-text table table-bordered text-center">
+    <table class="center-text table table-bordered table-hover text-center">
         <thead class="table-dark">
             <tr>
-            <th scope="col" class="col-md-1">Ticket ID</th>
-            <th scope="col" class="col-md-2">Date created</th>
+            <th scope="col" class="col-md-1">ID</th>
             @for ($i = 1; $i <= session('combination_count'); $i++)
-                <th scope='col' class='col-md-1'>Digit #{{ $i }}</th>
+                <th scope='col'>Digit #{{ $i }}</th>
             @endfor
             </tr>
         </thead>
         <tbody class="table-light">
             @forelse ($tickets as $ticket)
                 <tr>
-                    <th scope='row' class="text-primary">{{ $ticket->id }}</td>
-                    <td class="text-muted">{{ $ticket->created_at }}</td>
+                    <th scope='row' class="text-primary" style="background: #aaa !important">{{ $ticket->id }}</td>
                     @foreach ($ticket->digits as $digit)
                         <td class="text-primary fw-bold">{{ $digit }}</td>
                     @endforeach

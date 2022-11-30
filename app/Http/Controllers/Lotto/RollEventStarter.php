@@ -20,33 +20,26 @@ class RollEventStarter extends Controller
     public function __invoke()
     {
         // check if there are valid tickets, if none redirect
-        if (count(Ticket::where('owner', Auth::user()->name)
-                        ->where('is_valid', true)
-                        ->get()) == 0) {
+        if (Auth::user()->tickets->where('is_valid', true)->count() == 0) {
             return redirect()->action(
                 [TicketController::class, 'index']
             )->with('msg', 'You have no tickets.');
         }
         
         // create new roll event, set how many rolls and save to database
-        $roll_event = RollEvent::create([
+        $roll_event = Auth::user()->rollEvents()->create([
             'lotto_type' => session('lotto_type'),
             'rolls_left' => session('combination_count'),
         ]);
 
-        // --
         $this->registerValidTickets($roll_event->id);
-
-        // increment user's roll events participated
-        $this->incrementRollEventsParticipated();
 
         return view('lotto.roll')
             ->with('roll_event_id', $roll_event->id)
             ->with('rolls_left', RollEvent::where('id', $roll_event->id)->value('rolls_left'))
-            ->with('tickets', Ticket::where('owner', Auth::user()->name)
-                                    ->where('lotto_type', session('lotto_type'))
-                                    ->where('is_valid', true)
-                                    ->get())
+            ->with('tickets', Auth::user()->tickets
+                                        ->where('lotto_type', session('lotto_type'))
+                                        ->where('is_valid', true))
             ->with('msg', 'Roll event created with ID: ' . $roll_event->id . '. Valid tickets are registered.');
     }
 
@@ -58,23 +51,9 @@ class RollEventStarter extends Controller
      */
     private function registerValidTickets($roll_event_id)
     {
-        DB::table('tickets')
-            ->where('owner', Auth::user()->name)
-            ->where('lotto_type', session('lotto_type'))
-            ->where('is_valid', true)
-            ->update(['roll_event_id' => $roll_event_id]);
-    }
-
-    /**
-     * 
-     *
-     * 
-     * @return void
-     */
-    private function incrementRollEventsParticipated()
-    {
-        DB::table('users')
-            ->where('id', Auth::id())
-            ->increment('roll_events_participated');
+        Auth::user()->tickets()
+                    ->where('lotto_type', session('lotto_type'))
+                    ->where('is_valid', true)
+                    ->update(['roll_event_id' => $roll_event_id]);
     }
 }
