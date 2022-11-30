@@ -16,8 +16,8 @@ class TicketController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function index() {
-
+    public function index() 
+    {
         return view('ticket.index')
                 ->with('tickets', Auth::user()->tickets
                                             ->where('lotto_type', session('lotto_type'))
@@ -30,8 +30,8 @@ class TicketController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function create() {
-
+    public function create() 
+    {
         return view('ticket.create');
     }
     
@@ -43,10 +43,9 @@ class TicketController extends Controller
      */
     public function store(Request $request) 
     {
-        Ticket::create([
+        Auth::user()->tickets()->create([
             'lotto_type' => session('lotto_type'),
             'digits' => $request->digits,
-            'user_id' => Auth::user()->id,
         ]);
 
         return redirect('/tickets')
