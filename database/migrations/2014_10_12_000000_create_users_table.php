@@ -20,8 +20,6 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
-            $table->integer('tickets_created')->default(0);
-            $table->integer('roll_events_participated')->default(0);
             $table->bigInteger('money')->default(0);
             $table->timestamps();
         });
