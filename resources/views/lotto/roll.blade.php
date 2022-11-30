@@ -12,7 +12,7 @@
     <h1 class="fw-bold pb-0 mb-0 text-center font-weight-bold">{{ session('lotto_type') }}</h1>
     <h1 class='custom-h1 pb-0'>It's RNG time.</h1>
 
-    <div class="jumbotron bg-primary bg-gradient text-white rounded">
+    <div class="jumbotron bg-secondary bg-gradient text-white rounded">
         <h6 id="rolls-left-container" class="text-center py-0 my-0">Rolls left: {{ $rolls_left }}</h6>
         <h1 class="display-4 py-0 my-0">
             <span id='rolled-digit-container' class="text-white">

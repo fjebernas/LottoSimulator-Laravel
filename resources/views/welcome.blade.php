@@ -11,7 +11,7 @@
 @section('content')
     <div class="container col-xxl-10 px-4 d-flex flex-column justify-content-center align-items-center">
         <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
-            <div class="col-10 col-sm-8 col-lg-6 animate__animated animate__fadeIn">
+            <div class="col-10 col-sm-8 col-lg-6 animate__animated animate__fadeIn btn disabled">
                 <img src="https://media.philstar.com/photos/2020/11/02/lotto_2020-11-02_21-04-34.jpg" class="shadow rounded d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
             </div>
             <div class="col-lg-6 animate__animated animate__fadeIn">

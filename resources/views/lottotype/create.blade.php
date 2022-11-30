@@ -9,9 +9,9 @@
 @endsection
 
 @section('content')
-    <h1>Create a custom Lotto game:</h1>
+    <h1 class="fw-bold align-self-center">Create a custom Lotto game:</h1>
 
-    <div class="form-container d-flex flex-column">
+    <div class="form-container d-flex flex-column align-self-center">
         <form action="/lottotype" method="POST">
             @csrf
             <div class="form-group pb-3">

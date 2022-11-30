@@ -9,7 +9,7 @@
 @endsection
 
 @section('content')
-    <h1 class='custom-h1'>Create new ticket for {{ session('lotto_type') }}:</h1>
+    <h1 class='custom-h1 fw-bold'>Create new ticket for {{ session('lotto_type') }}:</h1>
 
     <div class="custom-container d-flex justify-content-between align-items-center mb-1 animate__animated animate__flipInX">
         <h5 class="text-muted m-0">Select {{ session('combination_count') }} digits:</h5>

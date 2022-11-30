@@ -81,7 +81,7 @@
 
     <div class="buttons">
         <a href="/" class='btn btn-warning d-flex align-items-center text-black'>
-            <box-icon name='home' color='white'></box-icon>
+            <box-icon name='home'></box-icon>
             &nbsp;Back to home
         </a>
     </div>
