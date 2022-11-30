@@ -24,11 +24,15 @@
 
     <form action="/tickets" method="POST">
         @csrf
-        <fieldset class="d-flex align-content-start flex-wrap d-flex bg-primary animate__animated animate__flipInX">
+        <fieldset class="d-flex align-content-start flex-wrap d-flex bg-light animate__animated animate__flipInX">
             @for ($i = session('digits_range')['min']; $i <= session('digits_range')['max']; $i++)
-            <div class="form-check form-check-digits form-check-inline d-flex align-items-center position-relative" style="column-gap: 10px">
-                <input type="checkbox" class="form-check-input form-check-input-digits" name="digits[]" value="{{ $i }}" id="{{ $i }}">
-                <label class="form-check-label fs-4 create-ticket position-relative" for="{{ $i }}">{{ $i }}</label>
+            <div class="form-check form-check-digits form-check-inline d-flex">
+                <input type="checkbox" 
+                        class="form-check-input form-check-input-digits" 
+                        name="digits[]" 
+                        value="{{ $i }}" 
+                        id="{{ $i }}">
+                <label class="form-check-label fs-4 text-muted" for="{{ $i }}">{{ $i }}</label>
             </div>
         @endfor
         </fieldset>

@@ -15,10 +15,10 @@
     <div class="jumbotron bg-primary bg-gradient text-white rounded">
         <h6 id="rolls-left-container" class="text-center py-0 my-0">Rolls left: {{ $rolls_left }}</h6>
         <h1 class="display-4 py-0 my-0">
-            <code id='rolled-digit-container' class="text-white">
+            <span id='rolled-digit-container' class="text-white">
                 <!-- rolled digit shows here -->
                 --
-            </code>
+            </span>
         </h1>
         <p class="lead">Rolled number</p>
         <p class="lead">
@@ -40,8 +40,8 @@
     <h1 class='custom-h1'>Your tickets:</h1>
 
     <div class="table-responsive">
-        <table class="center-text table table-hover table-bordered text-center bg-dark">
-            <thead class="text-white bg-secondary">
+        <table class="center-text table table-bordered text-center table-light">
+            <thead class="table-dark">
                 <tr>
                     <th scope="col" class="col-md-1">Ticket ID</th>
                     @for ($i = 1; $i <= session('combination_count'); $i++)
@@ -49,20 +49,12 @@
                     @endfor
                 </tr>
             </thead>
-            <tbody>
+            <tbody class="table-light">
                 @forelse ($tickets as $ticket)
                     <tr>
-                        <th scope='row' class="text-primary">{{ $ticket->id }}</td>
+                        <th scope='row' class="text-primary" style="background: #aaa !important">{{ $ticket->id }}</td>
                         @foreach ($ticket->digits as $digit)
-                            @isset($rolls)
-                                @if (in_array($digit, $rolls))
-                                    <td class="bg-primary fw-bold text-success">{{ $digit }}</td>
-                                @else
-                                    <td class="text-warning">{{ $digit }}</td>
-                                @endif
-                            @else
-                                <td class="{{ $digit }} text-warning">{{ $digit }}</td>
-                            @endisset
+                            <td class="{{ $digit }}">{{ $digit }}</td>
                         @endforeach
                     </tr>
                 @empty

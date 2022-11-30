@@ -13,8 +13,8 @@
 <h1 class='custom-h1'>Your tickets:</h1>
 
 <div class="table-responsive">
-    <table class="center-text table table-hover table-bordered text-center bg-dark">
-        <thead class="bg-primary">
+    <table class="center-text table table-bordered text-center">
+        <thead class="table-dark">
             <tr>
             <th scope="col" class="col-md-1">Ticket ID</th>
             <th scope="col" class="col-md-2">Date created</th>
@@ -23,13 +23,13 @@
             @endfor
             </tr>
         </thead>
-        <tbody>
+        <tbody class="table-light">
             @forelse ($tickets as $ticket)
                 <tr>
                     <th scope='row' class="text-primary">{{ $ticket->id }}</td>
                     <td class="text-muted">{{ $ticket->created_at }}</td>
                     @foreach ($ticket->digits as $digit)
-                        <td class="text-warning fw-bold">{{ $digit }}</td>
+                        <td class="text-primary fw-bold">{{ $digit }}</td>
                     @endforeach
                 </tr>
             @empty

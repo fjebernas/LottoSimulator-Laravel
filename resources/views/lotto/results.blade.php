@@ -18,9 +18,9 @@
                 <div class='card-header'>Rolled digit</div>
                 <div class='card-body'>
                     <h1 class='card-title py-0'>
-                        <code class="text-white fs-1">
+                        <span class="text-white fs-1">
                             {{ $roll }}
-                        </code>
+                        </span>
                     </h1>
                 </div>
             </div>
@@ -47,8 +47,8 @@
     <h1 class='custom-h1'>Your tickets:</h1>
 
     <div class="table-responsive">
-        <table class="center-text table table-hover table-bordered text-center bg-dark">
-            <thead class="text-white bg-secondary">
+        <table class="center-text table table-bordered text-center">
+            <thead class="table-dark">
                 <tr>
                     <th scope="col" class="col-md-1">Ticket ID</th>
                     @for ($i = 1; $i <= session('combination_count'); $i++)
@@ -57,18 +57,18 @@
                     <th scope="col" class="col-md-1">Matched digits</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody class="table-light">
                 @forelse ($tickets as $ticket)
                     <tr>
-                        <th scope='row'>{{ $ticket->id }}</td>
+                        <th scope='row' class="text-primary" style="background: #aaa !important">{{ $ticket->id }}</td>
                         @foreach ($ticket->digits as $digit)
                             @if (in_array($digit, $rolls))
-                                <td class="bg-primary fw-bold text-success">{{ $digit }}</td>
+                                <td class="bg-success fw-bold text-white">{{ $digit }}</td>
                             @else
                                 <td>{{ $digit }}</td>
                             @endif
                         @endforeach
-                        <th scope='row'>{{ $ticket->matched_digits }}</td>
+                        <th scope='row' class="bg-dark text-white">{{ $ticket->matched_digits }}</td>
                     </tr>
                 @empty
                     <tr>
