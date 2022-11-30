@@ -44,7 +44,7 @@
     </span>
 
     <div id="loader">
-        <img src="/images/ball-triangle.svg" alt="" srcset="">
+        <img src="/images/tail-spin.svg" alt="" srcset="">
     </div>
 
     <img src="/images/background.jpg" id="background" alt="" srcset="">

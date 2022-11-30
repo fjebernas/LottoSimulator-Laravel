@@ -13,7 +13,7 @@
 
     <div class="table-responsive">
         <table class="center-text table table-hover table-bordered text-center">
-            <thead class="text-white bg-secondary">
+            <thead class="table-dark">
                 <tr>
                     <th scope="col" class="col-md-1">Name</th>
                     <th scope="col" class="col-md-1">Tickets made</th>
@@ -21,7 +21,7 @@
                     <th scope="col" class="col-md-1">Money</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody class="table-light">
                 @forelse ($users as $user)
                     <tr>
                         @if ($loop->first)

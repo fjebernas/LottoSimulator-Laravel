@@ -41,6 +41,10 @@ table {
     background-color: #fff;
 }
 
+.btn {
+    border: 1px solid #000;
+}
+
 .buttons {
     display: flex;
     column-gap: 0.5rem;
