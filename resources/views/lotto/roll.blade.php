@@ -12,7 +12,7 @@
     <h1 class="fw-bold pb-0 mb-0 text-center font-weight-bold">{{ session('lotto_type') }}</h1>
     <h1 class='custom-h1 pb-0'>It's RNG time.</h1>
 
-    <div class="jumbotron bg-gradient text-white rounded" style="background: #553491;">
+    <div class="jumbotron bg-primary bg-gradient text-white rounded">
         <h6 id="rolls-left-container" class="text-center py-0 my-0">Rolls left: {{ $rolls_left }}</h6>
         <h1 class="display-4 py-0 my-0">
             <code id='rolled-digit-container' class="text-white">
@@ -28,7 +28,7 @@
                 {{-- button used by ajax and to be replaced by button that uses the form tag --}}
                 <div id="btn-roll-container">
                     <input id="roll_event_id" type="hidden" name="roll_event_id" value="{{ $roll_event_id }}">
-                    <button id='btn-roll' class='btn bg-primary text-white btn-lg' type='button'>Roll!</button>
+                    <button id='btn-roll' class='btn bg-info text-white btn-lg' type='button'>Roll!</button>
                 </div>
             </form>
             
@@ -40,7 +40,7 @@
     <h1 class='custom-h1'>Your tickets:</h1>
 
     <div class="table-responsive">
-        <table class="center-text table table-hover table-bordered text-center">
+        <table class="center-text table table-hover table-bordered text-center bg-dark">
             <thead class="text-white bg-secondary">
                 <tr>
                     <th scope="col" class="col-md-1">Ticket ID</th>
@@ -52,16 +52,16 @@
             <tbody>
                 @forelse ($tickets as $ticket)
                     <tr>
-                        <th scope='row'>{{ $ticket->id }}</td>
+                        <th scope='row' class="text-primary">{{ $ticket->id }}</td>
                         @foreach ($ticket->digits as $digit)
                             @isset($rolls)
                                 @if (in_array($digit, $rolls))
-                                    <td class="bg-success fw-bold text-warning">{{ $digit }}</td>
+                                    <td class="bg-primary fw-bold text-success">{{ $digit }}</td>
                                 @else
-                                    <td>{{ $digit }}</td>
+                                    <td class="text-warning">{{ $digit }}</td>
                                 @endif
                             @else
-                                <td class={{ $digit }}>{{ $digit }}</td>
+                                <td class="{{ $digit }} text-warning">{{ $digit }}</td>
                             @endisset
                         @endforeach
                     </tr>

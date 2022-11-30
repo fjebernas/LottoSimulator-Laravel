@@ -14,7 +14,7 @@
 
     <div class='rolls-container d-flex flex-row container flex-wrap  animate__animated animate__bounceInLeft'>
         @forelse ($rolls as $roll)
-            <div class='text-center card text-white bg-gradient mb-3' style='background: #553491; max-width: 10rem; margin-right: 10px;'>
+            <div class='text-center card text-white bg-primary bg-gradient mb-3' style='max-width: 10rem; margin-right: 10px;'>
                 <div class='card-header'>Rolled digit</div>
                 <div class='card-body'>
                     <h1 class='card-title py-0'>
@@ -47,7 +47,7 @@
     <h1 class='custom-h1'>Your tickets:</h1>
 
     <div class="table-responsive">
-        <table class="center-text table table-hover table-bordered text-center">
+        <table class="center-text table table-hover table-bordered text-center bg-dark">
             <thead class="text-white bg-secondary">
                 <tr>
                     <th scope="col" class="col-md-1">Ticket ID</th>
@@ -63,7 +63,7 @@
                         <th scope='row'>{{ $ticket->id }}</td>
                         @foreach ($ticket->digits as $digit)
                             @if (in_array($digit, $rolls))
-                                <td class="bg-success fw-bold text-warning">{{ $digit }}</td>
+                                <td class="bg-primary fw-bold text-success">{{ $digit }}</td>
                             @else
                                 <td>{{ $digit }}</td>
                             @endif
@@ -80,8 +80,8 @@
     </div>
 
     <div class="buttons">
-        <a href="/" class='btn btn-warning d-flex align-items-center'>
-            <box-icon name='home'></box-icon>
+        <a href="/" class='btn btn-warning d-flex align-items-center text-black'>
+            <box-icon name='home' color='white'></box-icon>
             &nbsp;Back to home
         </a>
     </div>

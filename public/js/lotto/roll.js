@@ -41,7 +41,7 @@ $(document).ready(function($){
                 }
                 
                 // highlight the td of the matched digit in table
-                $('.' + data['rolled_digit']).addClass('bg-success fw-bold text-warning');
+                $('.' + data['rolled_digit']).addClass('bg-primary fw-bold text-success');
 
                 // swal notification msg
                 Swal.fire(
