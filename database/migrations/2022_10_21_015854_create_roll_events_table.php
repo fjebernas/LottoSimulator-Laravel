@@ -19,6 +19,10 @@ return new class extends Migration
             $table->integer('rolls_left')->nullable();
             $table->boolean('is_finished')->default(false)->nullable();
             $table->integer('money_awarded')->default(0);
+            $table->foreignId('user_id')
+                ->constrained()
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
             $table->timestamps();
         });
     }
