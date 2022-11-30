@@ -5,7 +5,7 @@
  */
 
 // custom boostrap theme
-import 'bootswatch/dist/vapor/bootstrap.min.css'
+import 'bootswatch/dist/sketchy/bootstrap.min.css'
 // bootstrap js
 import 'bootstrap/dist/js/bootstrap'
 

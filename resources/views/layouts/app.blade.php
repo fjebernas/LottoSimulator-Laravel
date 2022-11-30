@@ -42,8 +42,15 @@
             @endif
         ">
     </span>
+
+    <div id="loader">
+        <img src="/images/ball-triangle.svg" alt="" srcset="">
+    </div>
+
+    <img src="/images/background.jpg" id="background" alt="" srcset="">
+
     <div id="app" class="d-flex flex-column">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm position-fixed w-100">
             <div class="container">
                 <a class="navbar-brand fs-3" href="{{ url('/') }}">
                     {{ config('app.name', 'Lotto Simulator') }}
@@ -103,7 +110,7 @@
             </div>
         </nav>
 
-        <main class="py-5">
+        <main class="py-5 col" style="margin-top: 70px">
             <div class="container-md d-flex flex-column">
                 @yield('content')
             </div>

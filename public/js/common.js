@@ -1,4 +1,8 @@
 $(document).ready(function () {
+    setTimeout(() => {
+        $('#loader').fadeOut(500);
+    }, 200);
+
     let notifMsg = $('#toast-data-holder').attr('data-msg').trim();
     let notifType = $('#toast-data-holder').attr('data-type').trim();
 
