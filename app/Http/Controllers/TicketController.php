@@ -16,13 +16,12 @@ class TicketController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request) {
+    public function index() {
 
         return view('ticket.index')
-                ->with('tickets', Ticket::where('owner', Auth::user()->name)
-                    ->where('lotto_type', session('lotto_type'))
-                    ->where('is_valid', true)
-                    ->get());
+                ->with('tickets', Auth::user()->tickets
+                                            ->where('lotto_type', session('lotto_type'))
+                                            ->where('is_valid', true));
     }
 
     /** show the form for creating a ticket
@@ -31,7 +30,7 @@ class TicketController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request) {
+    public function create() {
 
         return view('ticket.create');
     }
@@ -47,11 +46,8 @@ class TicketController extends Controller
         Ticket::create([
             'lotto_type' => session('lotto_type'),
             'digits' => $request->digits,
-            'owner' => Auth::user()->name,
             'user_id' => Auth::user()->id,
         ]);
-
-        $this->incrementTicketsCreated();
 
         return redirect('/tickets')
             ->with('notification', [
@@ -59,18 +55,5 @@ class TicketController extends Controller
                 'type' => 'success'
             ]
         );
-    }
-
-    
-    /** increment tickets_created for a user in users table
-     *
-     *
-     * 
-     * @return void
-     */
-    private function incrementTicketsCreated() {
-        DB::table('users')
-            ->where('id', Auth::id())
-            ->increment('tickets_created');
     }
 }

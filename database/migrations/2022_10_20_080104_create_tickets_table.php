@@ -20,7 +20,6 @@ return new class extends Migration
             $table->boolean('is_valid')->default(true)->nullable();
             $table->integer('matched_digits')->nullable();
             $table->integer('roll_event_id')->nullable();
-            $table->string('owner');
             $table->foreignId('user_id')
                 ->constrained()
                 ->onUpdate('cascade')
