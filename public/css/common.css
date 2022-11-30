@@ -58,3 +58,15 @@ footer {
     margin-bottom: 0;
     margin-top: auto;
 }
+
+/* custom scroll bar */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 4px;
+}
+::-webkit-scrollbar-track {
+    background: #ccc;
+}
+::-webkit-scrollbar-thumb {
+    background: #555;
+}

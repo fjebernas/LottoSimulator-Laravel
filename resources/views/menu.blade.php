@@ -9,7 +9,7 @@
 @endsection
 
 @section('content')
-    <h1 class="pb-4 align-self-center">Welcome, {{ Auth::user()->name }}.</h1>
+    <h1 class="pb-4 align-self-center fw-bold">Welcome, {{ Auth::user()->name }}.</h1>
     <h3 class="pb-3 align-self-center">Select type of Lotto to play:</h3>
 
     <div class="d-flex flex-column row gx-0 gy-2 cards-container align-self-center">
