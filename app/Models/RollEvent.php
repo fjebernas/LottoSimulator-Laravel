@@ -13,4 +13,11 @@ class RollEvent extends Model
         'lotto_type',
         'rolls_left',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(
+            User::class
+        );
+    }
 }

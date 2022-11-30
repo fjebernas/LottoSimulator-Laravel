@@ -48,4 +48,11 @@ class User extends Authenticatable
             Ticket::class
         );
     }
+
+    public function rollEvents()
+    {
+        return $this->hasMany(
+            RollEvent::class
+        );
+    }
 }
