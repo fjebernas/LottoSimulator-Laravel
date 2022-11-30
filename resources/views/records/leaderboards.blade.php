@@ -29,8 +29,8 @@
                         @else
                             <td scope='row' class="">{{ $user->name }}</td>
                         @endif
-                        <td scope='row' class="">{{ $user->tickets_created }}</td>
-                        <td scope='row' class="">{{ $user->roll_events_participated }}</td>
+                        <td scope='row' class="">{{ $user->tickets->count() }}</td>
+                        <td scope='row' class="">{{ $user->rollEvents->count() }}</td>
                         <td scope='row' class="text-success">₱{{ number_format($user->money)  }}</td>
                     </tr>
                 @empty
