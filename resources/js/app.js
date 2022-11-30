@@ -4,7 +4,11 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-import './bootstrap'
+// custom boostrap theme
+import 'bootswatch/dist/vapor/bootstrap.min.css'
+// bootstrap js
+import 'bootstrap/dist/js/bootstrap'
+
 import { createApp } from 'vue'
 import $ from 'jquery'
 import Swal from 'sweetalert2'
