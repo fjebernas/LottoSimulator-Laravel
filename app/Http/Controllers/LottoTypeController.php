@@ -18,10 +18,9 @@ class LottoTypeController extends Controller
         LottoType::create($request->all());
 
         return redirect('/menu')
-                ->with('notification', [
-                'message' => 'Successfully created new Lotto Game',
-                'type' => 'success'
-            ]
-        );
+            ->with('notification', [
+            'message' => 'Successfully created new Lotto Game',
+            'type' => 'success'
+        ]);
     }
 }

@@ -8,12 +8,14 @@ use App\Models\LottoType;
 
 class MenuController extends Controller
 {
-    public function menu() {
+    public function menu() 
+    {
         return view('menu')
             ->with('lotto_types', LottoType::all());
     }
 
-    public function setSessionDataAndRedirect(Request $request) {
+    public function setSessionDataAndRedirect(Request $request) 
+    {
 
         $lotto_type = LottoType::where('id', $request->lotto_type_id)->first();
         

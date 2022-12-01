@@ -7,8 +7,10 @@ use Illuminate\Http\Request;
 
 class RecordsController extends Controller
 {
-    public function showLeaderboards(Request $request) {
+    public function showLeaderboards() 
+    {
         return view('records.leaderboards')
-            ->with('users', User::orderBy('money', 'desc')->get());
+            ->with('users', User::orderBy('money', 'desc')
+                                ->get());
     }
 }
