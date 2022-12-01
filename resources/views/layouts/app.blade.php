@@ -21,8 +21,6 @@
             'resources/js/app.js',
             'resources/js/common.js'])
     
-    {{-- custom css for all pages --}}
-    <link rel="stylesheet" href="/css/common.css">
     {{-- custom CSS per page --}}
     @yield('customcss')
 
