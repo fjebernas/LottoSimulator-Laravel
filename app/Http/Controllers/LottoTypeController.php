@@ -2,34 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LottoTypeStoreRequest;
 use Illuminate\Http\Request;
 use App\Models\LottoType;
 
 class LottoTypeController extends Controller
 {
-    public function create(Request $request) {
+    public function create() 
+    {
         return view('lottotype.create');
     }
 
-    public function store(Request $request) {
-        $request->validate([
-            'name' => 'required|max:255',
-            'combination_count' => 'required',
-            'digits_range.*' => 'required|distinct',
-            'color_theme' => 'required|max:255'
-        ]);
+    public function store(LottoTypeStoreRequest $request) 
+    {
+        LottoType::create($request->all());
 
-        $lotto_type = new LottoType();
-        $lotto_type->name = $request->name;
-        $lotto_type->combination_count = $request->combination_count;
-        $lotto_type->digits_range = [
-                                        'min' => $request->digits_range[0],
-                                        'max' => $request->digits_range[1]
-                                    ];
-        $lotto_type->color_theme = $request->color_theme;
-        $lotto_type->save();
-
-        return redirect('/lottotype/create')->with('notification', [
+        return redirect('/menu')
+                ->with('notification', [
                 'message' => 'Successfully created new Lotto Game',
                 'type' => 'success'
             ]

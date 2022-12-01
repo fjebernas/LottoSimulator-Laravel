@@ -9,6 +9,13 @@ class LottoType extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'combination_count',
+        'digits_range',
+        'color_theme',
+    ];
+
     protected $casts = [
         'digits_range' => 'array',
     ];
