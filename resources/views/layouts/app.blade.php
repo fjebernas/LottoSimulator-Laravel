@@ -44,10 +44,10 @@
     </span>
 
     <div id="loader">
-        <img src="/images/tail-spin.svg" alt="" srcset="">
+        <img src="{{ asset('storage/images/tail-spin.svg') }}" alt="" srcset="">
     </div>
 
-    <img src="/images/background.jpg" id="background" alt="" srcset="">
+    <img src="{{ asset('storage/images/background.jpg') }}" id="background" alt="" srcset="">
 
     <div id="app" class="d-flex flex-column">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm position-fixed w-100">
