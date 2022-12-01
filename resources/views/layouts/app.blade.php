@@ -17,15 +17,15 @@
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
     {{-- CSS bootstrap --}}
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    @vite(['resources/sass/app.scss', 
+            'resources/js/app.js',
+            'resources/js/common.js'])
     
     {{-- custom css for all pages --}}
     <link rel="stylesheet" href="/css/common.css">
     {{-- custom CSS per page --}}
     @yield('customcss')
 
-    {{-- custom js for all pages --}}
-    <script src="/js/common.js" type="module"></script>
     {{-- custom js --}}
     @yield('customjs')
 </head>
