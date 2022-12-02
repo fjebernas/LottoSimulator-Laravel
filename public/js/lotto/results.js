@@ -1,6 +1,8 @@
-
-Swal.fire(
-    'Roll event closed',
-    'Thank you for playing!',
-    'info'
-)
+Swal.fire({
+    toast: true,
+    position: 'top-end',
+    icon: 'info',
+    title: 'Roll event closed.',
+    showConfirmButton: false,
+    timer: 2500
+});
