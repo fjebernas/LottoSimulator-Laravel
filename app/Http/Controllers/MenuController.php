@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use App\Models\LottoType;
+use App\Services\LottoTypeService;
 
 class MenuController extends Controller
 {
@@ -14,14 +15,11 @@ class MenuController extends Controller
             ->with('lotto_types', LottoType::all());
     }
 
-    public function setSessionDataAndRedirect(Request $request) 
+    public function setSessionDataAndRedirect(Request $request, LottoTypeService $lottoTypeService) 
     {
-
         $lotto_type = LottoType::where('id', $request->lotto_type_id)->first();
         
-        Session::put('lotto_type', $lotto_type->name);
-        Session::put('combination_count', $lotto_type->combination_count);
-        Session::put('digits_range', $lotto_type->digits_range);
+        $lottoTypeService->setSessionData($lotto_type);
 
         return redirect('/tickets');
     }
