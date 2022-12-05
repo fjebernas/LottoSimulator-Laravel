@@ -20,7 +20,11 @@
                 </div>
                 <div class="card-body d-flex flex-column">
                     <h5 class="card-title fs-1">{{ $lotto_type->name }}</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                    <p class="card-text">
+                        Digit combinations: {{ $lotto_type->combination_count }} | 
+                        Starting digit: {{ $lotto_type->digits_range['min'] }} |
+                        Last digit: {{ $lotto_type->digits_range['max'] }}
+                    </p>
                     <form action="/menu/set" method="GET" class="d-flex flex-column">
                         @csrf
                         <input type="hidden" name="lotto_type_id" value="{{ $lotto_type->id }}">
